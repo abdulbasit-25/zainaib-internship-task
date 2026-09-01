@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Sidebar } from "../components/Sidebar";
 import { Navbar } from "../components/Navbar";
 import "./AdminLayout.css";
@@ -8,6 +8,15 @@ import "./AdminLayout.css";
  */
 export const AdminLayout = ({ children, title, isLive = false }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [theme, setTheme] = useState(() => {
+    const savedTheme = localStorage.getItem("novaops-theme");
+    return savedTheme || "light";
+  });
+
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("novaops-theme", theme);
+  }, [theme]);
 
   return (
     <div className="admin-layout">
@@ -18,6 +27,12 @@ export const AdminLayout = ({ children, title, isLive = false }) => {
           title={title}
           onMenuClick={() => setSidebarOpen(!sidebarOpen)}
           isLive={isLive}
+          theme={theme}
+          onToggleTheme={() =>
+            setTheme((currentTheme) =>
+              currentTheme === "light" ? "dark" : "light",
+            )
+          }
         />
 
         <main className="admin-content">{children}</main>
