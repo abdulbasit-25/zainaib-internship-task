@@ -1,18 +1,4 @@
-/**
- * app.js
- * ------------------------------------------------------
- * The application layer: owns UI state (current search
- * term, selected categories, price range, sort key),
- * renders the DOM, and wires up every event listener.
- *
- * ProductCatalog (products.js) and Cart (cart.js) hold
- * the actual data logic; this file coordinates them.
- * ------------------------------------------------------
- */
-
 document.addEventListener("DOMContentLoaded", init);
-
-// ---- Application state -------------------------------------------------
 
 const state = {
   allProducts: [],
@@ -24,8 +10,6 @@ const state = {
   priceCeiling: 500,
   sortKey: "default",
 };
-
-// ---- Cached DOM references ----------------------------------------------
 
 const els = {};
 
@@ -63,8 +47,6 @@ function cacheDom() {
   els.confirmOrderId = document.getElementById("confirm-order-id");
 }
 
-// ---- Initialization -------------------------------------------------
-
 async function init() {
   cacheDom();
   Cart.loadCart();
@@ -77,7 +59,8 @@ async function init() {
     console.error(err);
     els.productGrid.innerHTML = "";
     els.emptyState.hidden = false;
-    els.emptyState.querySelector("h2").textContent = "Couldn't load the catalog";
+    els.emptyState.querySelector("h2").textContent =
+      "Couldn't load the catalog";
     els.emptyState.querySelector("p").textContent =
       "The product data failed to load. If you opened this file directly, try running it through a local server instead.";
     return;
@@ -91,8 +74,6 @@ async function init() {
   configurePriceSlider();
   applyFiltersAndRender();
 }
-
-// ---- Category filter UI -------------------------------------------------
 
 function buildCategoryFilters(products) {
   const categories = ProductCatalog.getCategories(products);
@@ -125,8 +106,6 @@ function buildCategoryFilters(products) {
   });
 }
 
-// ---- Price slider -------------------------------------------------
-
 function configurePriceSlider() {
   els.priceMin.max = state.priceCeiling;
   els.priceMax.max = state.priceCeiling;
@@ -148,7 +127,6 @@ function handlePriceInput() {
   let min = Number(els.priceMin.value);
   let max = Number(els.priceMax.value);
 
-  // Keep the two handles from crossing over each other.
   if (min > max) {
     [min, max] = [max, min];
   }
@@ -160,8 +138,6 @@ function handlePriceInput() {
   updatePriceRangeFill();
   applyFiltersAndRender();
 }
-
-// ---- Static event wiring -------------------------------------------------
 
 function bindStaticEvents() {
   els.searchForm.addEventListener("submit", (e) => e.preventDefault());
@@ -226,8 +202,6 @@ function resetFilters() {
 
   applyFiltersAndRender();
 }
-
-// ---- Product pipeline: search -> filter -> sort -> render ----------------
 
 function applyFiltersAndRender() {
   let list = ProductCatalog.searchProducts(state.allProducts, state.searchTerm);
@@ -308,8 +282,6 @@ function renderProductCard(product) {
 function starIcon() {
   return `<svg viewBox="0 0 20 20" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M10 1.5l2.6 5.5 6 .7-4.4 4.1 1.2 6-5.4-3-5.4 3 1.2-6L1.4 7.7l6-.7z"/></svg>`;
 }
-
-// ---- Cart interactions -------------------------------------------------
 
 function handleAddToCart(productId) {
   const product = state.allProducts.find((p) => p.id === productId);
