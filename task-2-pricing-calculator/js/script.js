@@ -1,12 +1,3 @@
-/**
- * script.js
- * ------------------------------------------------------
- * Pricing calculator logic: reads the form, applies the
- * volume discount schedule, and re-renders the ledger on
- * every input change. No external dependencies.
- * ------------------------------------------------------
- */
-
 document.addEventListener("DOMContentLoaded", init);
 
 const DISCOUNT_TIERS = [
@@ -53,7 +44,6 @@ function bindEvents() {
   els.resetBtn.addEventListener("click", handleReset);
 }
 
-/** Returns the applicable tier for a given quantity. */
 function getTierForQuantity(quantity) {
   return DISCOUNT_TIERS.find((tier) => quantity >= tier.min);
 }
@@ -108,7 +98,7 @@ function calculate() {
   showFieldError(els.taxRate, els.taxRateError, errors.taxRate);
 
   if (Object.keys(errors).length > 0) {
-    return; // leave the last valid breakdown on screen rather than showing NaN
+    return;
   }
 
   const subtotal = unitPrice * quantity;
@@ -133,7 +123,6 @@ function calculate() {
 }
 
 function handleReset() {
-  // Let the native form reset run first, then recalc on the restored defaults.
   window.requestAnimationFrame(() => {
     els.form.reset();
     ["productName", "unitPrice", "quantity", "taxRate"].forEach((key) => {
