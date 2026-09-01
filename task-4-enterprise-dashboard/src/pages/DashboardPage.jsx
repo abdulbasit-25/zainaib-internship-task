@@ -80,16 +80,12 @@ export const DashboardPage = () => {
   const [metrics, setMetrics] = useState(mockInitialMetrics);
   const [isLive, setIsLive] = useState(true);
 
-  // Start metrics stream on component mount
   useEffect(() => {
     const cleanup = startMetricsStream(setMetrics, 3000);
     return cleanup;
   }, []);
 
-  // Get metrics with change indicators
   const metricsDisplay = getMetricsWithChange(metrics, mockInitialMetrics);
-
-  // Setup activity table
   const activityTable = useTable(activityFeed, "id");
 
   return (
