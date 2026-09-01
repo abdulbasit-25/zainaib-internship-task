@@ -139,7 +139,7 @@ export function getMetricsWithChange(currentMetrics, previousMetrics) {
         currentMetrics.totalRevenue,
         initialMetrics.totalRevenue,
       ),
-      icon: <CircleDollarSign size={17} />,
+      icon: CircleDollarSign,
     },
     activeUsers: {
       value: currentMetrics.activeUsers.toLocaleString(),
@@ -147,7 +147,7 @@ export function getMetricsWithChange(currentMetrics, previousMetrics) {
         currentMetrics.activeUsers,
         initialMetrics.activeUsers,
       ),
-      icon: <Users size={17} />,
+      icon: Users,
     },
     totalOrders: {
       value: currentMetrics.totalOrders.toLocaleString(),
@@ -155,7 +155,7 @@ export function getMetricsWithChange(currentMetrics, previousMetrics) {
         currentMetrics.totalOrders,
         initialMetrics.totalOrders,
       ),
-      icon: <Package size={17} />,
+      icon: Package,
     },
     conversionRate: {
       value: `${currentMetrics.conversionRate.toFixed(2)}%`,
@@ -163,7 +163,7 @@ export function getMetricsWithChange(currentMetrics, previousMetrics) {
         currentMetrics.conversionRate,
         initialMetrics.conversionRate,
       ),
-      icon: <TrendingUp size={17} />,
+      icon: TrendingUp,
     },
     systemPerformance: {
       value: `${currentMetrics.systemPerformance.toFixed(1)}%`,
@@ -171,7 +171,7 @@ export function getMetricsWithChange(currentMetrics, previousMetrics) {
         currentMetrics.systemPerformance,
         initialMetrics.systemPerformance,
       ),
-      icon: <Zap size={17} />,
+      icon: Zap,
     },
   };
 }
