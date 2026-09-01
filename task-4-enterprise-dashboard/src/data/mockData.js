@@ -224,14 +224,6 @@ export const transactionsTableData = [
   },
 ];
 
-import {
-  CircleDollarSign,
-  Package,
-  ShieldCheck,
-  TriangleAlert,
-  UserRound,
-} from "lucide-react";
-
 // Activity feed
 export const activityFeed = [
   {
@@ -239,34 +231,34 @@ export const activityFeed = [
     type: "sale",
     message: "New sale of $2,500 from John Smith",
     timestamp: "2 minutes ago",
-    icon: <CircleDollarSign size={14} />,
+    iconKey: "sale",
   },
   {
     id: 2,
     type: "user",
     message: "New user registration: sarah.jones@email.com",
     timestamp: "15 minutes ago",
-    icon: <UserRound size={14} />,
+    iconKey: "user",
   },
   {
     id: 3,
     type: "alert",
     message: "Low stock alert for Support Package",
     timestamp: "1 hour ago",
-    icon: <TriangleAlert size={14} />,
+    iconKey: "alert",
   },
   {
     id: 4,
     type: "system",
     message: "System backup completed successfully",
     timestamp: "2 hours ago",
-    icon: <ShieldCheck size={14} />,
+    iconKey: "system",
   },
   {
     id: 5,
     type: "sale",
     message: "Bulk order placed: 50 units of Premium Dashboard Pro",
     timestamp: "3 hours ago",
-    icon: <Package size={14} />,
+    iconKey: "sale",
   },
 ];
