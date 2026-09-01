@@ -8,12 +8,15 @@ import "./MetricCard.css";
 export const MetricCard = ({ title, value, change, icon, isPositive }) => {
   const changeClass = isPositive ? "positive" : "negative";
   const TrendIcon = isPositive ? ArrowUpRight : ArrowDownRight;
+  const IconComponent = typeof icon === "function" ? icon : null;
 
   return (
     <div className="metric-card fade-in">
       <div className="metric-header">
         <h3 className="metric-title">{title}</h3>
-        <span className="metric-icon">{icon}</span>
+        <span className="metric-icon">
+          {IconComponent ? <IconComponent size={17} /> : icon}
+        </span>
       </div>
 
       <div className="metric-value">{value}</div>
