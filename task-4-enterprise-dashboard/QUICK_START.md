@@ -17,8 +17,8 @@ npm run build
 
 **Admin Account:**
 
-- Email: `admin@progree.com`
-- Password: `Admin123!`
+- Email: `zainab@admin.com`
+- Password: `zainab1234`
 
 **Demo Account:**
 
