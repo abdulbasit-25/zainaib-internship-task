@@ -1,5 +1,16 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import {
+  BarChart3,
+  CreditCard,
+  LayoutDashboard,
+  LogOut,
+  Package,
+  Settings,
+  Sparkles,
+  Users,
+  X,
+} from "lucide-react";
 import { useAuth } from "../context/AuthContext";
 import "./Sidebar.css";
 
@@ -8,15 +19,16 @@ import "./Sidebar.css";
  */
 export const Sidebar = ({ isOpen, setIsOpen }) => {
   const navigate = useNavigate();
+  const location = useLocation();
   const { logout } = useAuth();
 
   const menuItems = [
-    { label: "Dashboard", path: "/dashboard", icon: "📊" },
-    { label: "Analytics", path: "/analytics", icon: "📈" },
-    { label: "Users", path: "/users", icon: "👥" },
-    { label: "Products", path: "/products", icon: "📦" },
-    { label: "Transactions", path: "/transactions", icon: "💳" },
-    { label: "Settings", path: "/settings", icon: "⚙️" },
+    { label: "Dashboard", path: "/dashboard", icon: LayoutDashboard },
+    { label: "Analytics", path: "/analytics", icon: BarChart3 },
+    { label: "Users", path: "/users", icon: Users },
+    { label: "Products", path: "/products", icon: Package },
+    { label: "Transactions", path: "/transactions", icon: CreditCard },
+    { label: "Settings", path: "/settings", icon: Settings },
   ];
 
   const handleLogout = () => {
@@ -29,33 +41,50 @@ export const Sidebar = ({ isOpen, setIsOpen }) => {
       <div className={`sidebar ${isOpen ? "open" : ""}`}>
         <div className="sidebar-header">
           <div className="logo">
-            <span className="logo-icon">📊</span>
-            <span className="logo-text">Dashboard</span>
+            <span className="logo-icon">
+              <Sparkles size={18} />
+            </span>
+            <div className="logo-copy">
+              <span className="logo-text">NovaOps</span>
+              <span className="logo-subtext">Control center</span>
+            </div>
           </div>
           <button className="close-btn" onClick={() => setIsOpen(false)}>
-            ✕
+            <X size={18} />
           </button>
         </div>
 
-        <nav className="sidebar-nav">
-          {menuItems.map((item) => (
-            <button
-              key={item.path}
-              className="nav-link"
-              onClick={() => {
-                navigate(item.path);
-                setIsOpen(false);
-              }}
-            >
-              <span className="nav-icon">{item.icon}</span>
-              <span className="nav-label">{item.label}</span>
-            </button>
-          ))}
+        <nav className="sidebar-nav" aria-label="Sidebar Navigation">
+          {menuItems.map((item) => {
+            const Icon = item.icon;
+            const isActive = location.pathname === item.path;
+
+            return (
+              <button
+                key={item.path}
+                className={`nav-link ${isActive ? "active" : ""}`}
+                onClick={() => {
+                  navigate(item.path);
+                  setIsOpen(false);
+                }}
+              >
+                <span className="nav-icon">
+                  <Icon size={18} />
+                </span>
+                <span className="nav-label">{item.label}</span>
+              </button>
+            );
+          })}
         </nav>
 
         <div className="sidebar-footer">
+          <div className="sidebar-branding" aria-label="Made by Zainab">
+            <span>Made by</span>
+            <strong>Zainab</strong>
+          </div>
           <button className="logout-btn" onClick={handleLogout}>
-            🚪 Logout
+            <LogOut size={16} />
+            Logout
           </button>
         </div>
       </div>
