@@ -60,7 +60,7 @@ function getTierForQuantity(quantity) {
 
 function formatCurrency(amount) {
   const sign = amount < 0 ? "\u2212" : "";
-  return `${sign}$${Math.abs(amount).toFixed(2)}`;
+  return `${sign}PKR ${Math.abs(amount).toFixed(2)}`;
 }
 
 function validate({ productName, unitPrice, quantity, taxRate }) {
@@ -127,7 +127,7 @@ function calculate() {
   els.afterDiscountValue.textContent = formatCurrency(afterDiscount);
 
   els.taxRateLabel.textContent = `${taxRate}%`;
-  els.taxValue.textContent = `+$${taxAmount.toFixed(2)}`;
+  els.taxValue.textContent = `+PKR ${taxAmount.toFixed(2)}`;
 
   els.finalTotalValue.textContent = formatCurrency(finalTotal);
 }
