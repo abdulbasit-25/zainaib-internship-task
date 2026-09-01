@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Professional Pricing Calculator | Zainab's Portfolio</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- Header Section -->
+      <header class="header">
+        <div class="header-content">
+          <h1 class="header-title">Pricing Calculator</h1>
+          <p class="header-subtitle">
+            Calculate your pricing with dynamic volume discounts
+          </p>
+        </div>
+      </header>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <!-- Calculator Card -->
+        <div class="calculator-card">
+          <!-- Input Section -->
+          <section class="input-section">
+            <h2 class="section-title">Enter Details</h2>
+
+            <form id="calculatorForm" class="form">
+              <!-- Product Name Field -->
+              <div class="form-group">
+                <label for="productName" class="form-label"
+                  >Product/Service Name</label
+                >
+                <input
+                  type="text"
+                  id="productName"
+                  class="form-input"
+                  placeholder="e.g., Web Development Service"
+                  value="Web Development Service"
+                  required
+                />
+                <span class="error-message" id="productNameError"></span>
+              </div>
+
+              <!-- Unit Price Field -->
+              <div class="form-group">
+                <label for="unitPrice" class="form-label">Unit Price ($)</label>
+                <input
+                  type="number"
+                  id="unitPrice"
+                  class="form-input"
+                  placeholder="Enter unit price"
+                  value="100"
+                  min="0"
+                  step="0.01"
+                  required
+                />
+                <span class="error-message" id="unitPriceError"></span>
+              </div>
+
+              <!-- Quantity Field -->
+              <div class="form-group">
+                <label for="quantity" class="form-label"
+                  >Quantity (Units)</label
+                >
+                <input
+                  type="number"
+                  id="quantity"
+                  class="form-input"
+                  placeholder="Enter quantity"
+                  value="5"
+                  min="0"
+                  step="1"
+                  required
+                />
+                <span class="error-message" id="quantityError"></span>
+              </div>
+
+              <!-- Tax Rate Field -->
+              <div class="form-group">
+                <label for="taxRate" class="form-label">Tax Rate (%)</label>
+                <input
+                  type="number"
+                  id="taxRate"
+                  class="form-input"
+                  placeholder="Enter tax rate"
+                  value="8"
+                  min="0"
+                  max="100"
+                  step="0.01"
+                  required
+                />
+                <span class="error-message" id="taxRateError"></span>
+              </div>
+            </form>
+          </section>
+
+          <!-- Breakdown Section -->
+          <section class="breakdown-section">
+            <h2 class="section-title">Pricing Breakdown</h2>
+
+            <div class="breakdown-grid">
+              <!-- Subtotal Card -->
+              <div class="breakdown-card">
+                <div class="breakdown-label">Subtotal</div>
+                <div class="breakdown-value" id="subtotalValue">$500.00</div>
+              </div>
+
+              <!-- Discount Card -->
+              <div class="breakdown-card highlight-discount">
+                <div class="breakdown-label">Discount Applied</div>
+                <div class="breakdown-value discount-value" id="discountValue">
+                  5% ($25.00)
+                </div>
+              </div>
+
+              <!-- After Discount Card -->
+              <div class="breakdown-card">
+                <div class="breakdown-label">After Discount</div>
+                <div class="breakdown-value" id="afterDiscountValue">
+                  $475.00
+                </div>
+              </div>
+
+              <!-- Tax Card -->
+              <div class="breakdown-card">
+                <div class="breakdown-label">Tax (8%)</div>
+                <div class="breakdown-value tax-value" id="taxValue">
+                  $38.00
+                </div>
+              </div>
+
+              <!-- Final Total Card -->
+              <div class="breakdown-card highlight-total">
+                <div class="breakdown-label">Final Total</div>
+                <div
+                  class="breakdown-value final-total-value"
+                  id="finalTotalValue"
+                >
+                  $513.00
+                </div>
+              </div>
+
+              <!-- Discount Tier Info -->
+              <div class="breakdown-card discount-tier">
+                <div class="breakdown-label">Discount Tier</div>
+                <div class="breakdown-value tier-badge" id="discountTierValue">
+                  5-9 Items: 5%
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Volume Discount Info -->
+          <section class="discount-info-section">
+            <h3 class="discount-info-title">📊 Volume Discount Structure</h3>
+            <div class="discount-tiers">
+              <div class="tier-row">
+                <span class="tier-range">1–4 items</span>
+                <span class="tier-discount">0% discount</span>
+              </div>
+              <div class="tier-row">
+                <span class="tier-range">5–9 items</span>
+                <span class="tier-discount">5% discount</span>
+              </div>
+              <div class="tier-row">
+                <span class="tier-range">10–19 items</span>
+                <span class="tier-discount">10% discount</span>
+              </div>
+              <div class="tier-row">
+                <span class="tier-range">20+ items</span>
+                <span class="tier-discount">15% discount</span>
+              </div>
+            </div>
+          </section>
+
+          <!-- Action Buttons -->
+          <div class="button-group">
+            <button type="reset" class="btn btn-secondary" id="resetBtn">
+              Reset Calculator
+            </button>
+          </div>
+        </div>
+      </main>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <p class="footer-text">
+          Professional Pricing Calculator | Frontend Web Development Project
+        </p>
+      </footer>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="js/script.js"></script>
+  </body>
+</html>
