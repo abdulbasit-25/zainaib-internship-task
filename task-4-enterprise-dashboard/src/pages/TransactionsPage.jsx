@@ -93,7 +93,7 @@ export const TransactionsPage = () => {
           <div className="stat">
             <span className="stat-label">Total Revenue</span>
             <span className="stat-value">
-              ${(stats.revenue / 1000).toFixed(1)}K
+              PKR {(stats.revenue / 1000).toFixed(1)}K
             </span>
           </div>
         </div>
