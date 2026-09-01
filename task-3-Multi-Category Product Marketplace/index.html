@@ -1,180 +1,346 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Markhaus — Every category, one cart</title>
-<meta name="description" content="Markhaus is a multi-category marketplace demo: browse electronics, clothing, accessories, home goods and gaming gear, filter and sort in real time, and check out with a persistent cart." />
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css" />
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Markhaus — Every category, one cart</title>
+    <meta
+      name="description"
+      content="Markhaus is a multi-category marketplace demo: browse electronics, clothing, accessories, home goods and gaming gear, filter and sort in real time, and check out with a persistent cart."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to product listing</a>
 
-<a class="skip-link" href="#main-content">Skip to product listing</a>
+    <!-- ============ HEADER ============ -->
+    <header class="site-header">
+      <div class="site-header__inner">
+        <a href="index.html" class="brand" aria-label="Markhaus home">
+          <span class="brand__mark" aria-hidden="true">M</span>
+          <span class="brand__name">Markhaus</span>
+        </a>
 
-<!-- ============ HEADER ============ -->
-<header class="site-header">
-  <div class="site-header__inner">
-    <a href="index.html" class="brand" aria-label="Markhaus home">
-      <span class="brand__mark" aria-hidden="true">M</span>
-      <span class="brand__name">Markhaus</span>
-    </a>
+        <form class="search-form" role="search" id="search-form">
+          <label for="search-input" class="visually-hidden"
+            >Search products by name, description, or category</label
+          >
+          <svg
+            class="search-form__icon"
+            aria-hidden="true"
+            viewBox="0 0 24 24"
+            width="18"
+            height="18"
+          >
+            <circle
+              cx="11"
+              cy="11"
+              r="7"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            />
+            <line
+              x1="16.5"
+              y1="16.5"
+              x2="21"
+              y2="21"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+          </svg>
+          <input
+            type="search"
+            id="search-input"
+            name="search"
+            placeholder="Search headphones, hoodies, cast-iron…"
+            autocomplete="off"
+          />
+        </form>
 
-    <form class="search-form" role="search" id="search-form">
-      <label for="search-input" class="visually-hidden">Search products by name, description, or category</label>
-      <svg class="search-form__icon" aria-hidden="true" viewBox="0 0 24 24" width="18" height="18">
-        <circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/>
-        <line x1="16.5" y1="16.5" x2="21" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-      </svg>
-      <input type="search" id="search-input" name="search" placeholder="Search headphones, hoodies, cast-iron…" autocomplete="off" />
-    </form>
-
-    <button type="button" class="cart-toggle" id="cart-toggle" aria-haspopup="dialog" aria-controls="cart-drawer" aria-expanded="false">
-      <svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22">
-        <path d="M3 4h2l2.4 12.4a2 2 0 0 0 2 1.6h7.2a2 2 0 0 0 2-1.6L20 8H6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-        <circle cx="9" cy="21" r="1.4" fill="currentColor"/>
-        <circle cx="17" cy="21" r="1.4" fill="currentColor"/>
-      </svg>
-      <span class="cart-toggle__label">Cart</span>
-      <span class="cart-toggle__count" id="cart-count" aria-live="polite">0</span>
-    </button>
-  </div>
-</header>
-
-<!-- ============ HERO ============ -->
-<section class="hero">
-  <div class="hero__inner">
-    <p class="hero__eyebrow">A local-first shopping demo</p>
-    <h1 class="hero__title">Five categories. One well-behaved cart.</h1>
-    <p class="hero__sub">Filter by category and price, search as you type, sort however you like — everything updates instantly, and your cart survives a refresh.</p>
-  </div>
-</section>
-
-<!-- ============ MAIN LAYOUT ============ -->
-<div class="layout" id="main-content">
-
-  <!-- FILTER SIDEBAR -->
-  <aside class="filters" aria-labelledby="filters-heading">
-    <h2 id="filters-heading" class="filters__heading">Refine</h2>
-
-    <div class="filters__group">
-      <h3 class="filters__label">Category</h3>
-      <fieldset class="filters__fieldset">
-        <legend class="visually-hidden">Filter by category</legend>
-        <div id="category-checkboxes" class="filters__checkboxes">
-          <!-- injected by JS -->
-        </div>
-      </fieldset>
-    </div>
-
-    <div class="filters__group">
-      <h3 class="filters__label" id="price-label">Price range</h3>
-      <div class="price-slider" role="group" aria-labelledby="price-label">
-        <div class="price-slider__track-wrap">
-          <div class="price-slider__track"></div>
-          <div class="price-slider__range" id="price-range-fill"></div>
-          <input type="range" id="price-min" class="price-slider__input price-slider__input--min" min="0" max="500" step="1" value="0" aria-label="Minimum price" />
-          <input type="range" id="price-max" class="price-slider__input price-slider__input--max" min="0" max="500" step="1" value="500" aria-label="Maximum price" />
-        </div>
-        <div class="price-slider__values">
-          <span>$<span id="price-min-value">0</span></span>
-          <span>$<span id="price-max-value">500</span></span>
-        </div>
+        <button
+          type="button"
+          class="cart-toggle"
+          id="cart-toggle"
+          aria-haspopup="dialog"
+          aria-controls="cart-drawer"
+          aria-expanded="false"
+        >
+          <svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22">
+            <path
+              d="M3 4h2l2.4 12.4a2 2 0 0 0 2 1.6h7.2a2 2 0 0 0 2-1.6L20 8H6"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <circle cx="9" cy="21" r="1.4" fill="currentColor" />
+            <circle cx="17" cy="21" r="1.4" fill="currentColor" />
+          </svg>
+          <span class="cart-toggle__label">Cart</span>
+          <span class="cart-toggle__count" id="cart-count" aria-live="polite"
+            >0</span
+          >
+        </button>
       </div>
-    </div>
+    </header>
 
-    <button type="button" class="filters__reset" id="reset-filters">Clear all filters</button>
-  </aside>
-
-  <!-- PRODUCT LISTING -->
-  <main class="catalog">
-    <div class="catalog__bar">
-      <p class="catalog__count" id="results-count" aria-live="polite">Showing 24 products</p>
-
-      <div class="catalog__sort">
-        <label for="sort-select">Sort by</label>
-        <select id="sort-select" name="sort">
-          <option value="default">Featured</option>
-          <option value="price-asc">Price: Low to High</option>
-          <option value="price-desc">Price: High to Low</option>
-          <option value="name-asc">Name: A to Z</option>
-          <option value="name-desc">Name: Z to A</option>
-          <option value="rating-desc">Rating: High to Low</option>
-        </select>
+    <!-- ============ HERO ============ -->
+    <section class="hero">
+      <div class="hero__inner">
+        <p class="hero__eyebrow">A local-first shopping demo</p>
+        <h1 class="hero__title">Five categories. One well-behaved cart.</h1>
+        <p class="hero__sub">
+          Filter by category and price, search as you type, sort however you
+          like — everything updates instantly, and your cart survives a refresh.
+        </p>
       </div>
+    </section>
+
+    <!-- ============ MAIN LAYOUT ============ -->
+    <div class="layout" id="main-content">
+      <!-- FILTER SIDEBAR -->
+      <aside class="filters" aria-labelledby="filters-heading">
+        <h2 id="filters-heading" class="filters__heading">Refine</h2>
+
+        <div class="filters__group">
+          <h3 class="filters__label">Category</h3>
+          <fieldset class="filters__fieldset">
+            <legend class="visually-hidden">Filter by category</legend>
+            <div id="category-checkboxes" class="filters__checkboxes">
+              <!-- injected by JS -->
+            </div>
+          </fieldset>
+        </div>
+
+        <div class="filters__group">
+          <h3 class="filters__label" id="price-label">Price range</h3>
+          <div class="price-slider" role="group" aria-labelledby="price-label">
+            <div class="price-slider__track-wrap">
+              <div class="price-slider__track"></div>
+              <div class="price-slider__range" id="price-range-fill"></div>
+              <input
+                type="range"
+                id="price-min"
+                class="price-slider__input price-slider__input--min"
+                min="0"
+                max="500"
+                step="1"
+                value="0"
+                aria-label="Minimum price"
+              />
+              <input
+                type="range"
+                id="price-max"
+                class="price-slider__input price-slider__input--max"
+                min="0"
+                max="500"
+                step="1"
+                value="500"
+                aria-label="Maximum price"
+              />
+            </div>
+            <div class="price-slider__values">
+              <span>$<span id="price-min-value">0</span></span>
+              <span>$<span id="price-max-value">500</span></span>
+            </div>
+          </div>
+        </div>
+
+        <button type="button" class="filters__reset" id="reset-filters">
+          Clear all filters
+        </button>
+      </aside>
+
+      <!-- PRODUCT LISTING -->
+      <main class="catalog">
+        <div class="catalog__bar">
+          <p class="catalog__count" id="results-count" aria-live="polite">
+            Showing 24 products
+          </p>
+
+          <div class="catalog__sort">
+            <label for="sort-select">Sort by</label>
+            <select id="sort-select" name="sort">
+              <option value="default">Featured</option>
+              <option value="price-asc">Price: Low to High</option>
+              <option value="price-desc">Price: High to Low</option>
+              <option value="name-asc">Name: A to Z</option>
+              <option value="name-desc">Name: Z to A</option>
+              <option value="rating-desc">Rating: High to Low</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="product-grid" id="product-grid" aria-live="polite">
+          <!-- product cards injected by JS -->
+        </div>
+
+        <div class="empty-state" id="empty-state" hidden>
+          <svg aria-hidden="true" viewBox="0 0 64 64" width="56" height="56">
+            <circle
+              cx="32"
+              cy="32"
+              r="28"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            />
+            <line
+              x1="22"
+              y1="40"
+              x2="42"
+              y2="24"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+          </svg>
+          <h2>Nothing matches those filters</h2>
+          <p>
+            Try widening the price range, clearing a category, or searching a
+            different term.
+          </p>
+          <button type="button" id="empty-reset">Clear all filters</button>
+        </div>
+      </main>
     </div>
 
-    <div class="product-grid" id="product-grid" aria-live="polite">
-      <!-- product cards injected by JS -->
-    </div>
+    <!-- ============ CART DRAWER ============ -->
+    <div class="drawer-overlay" id="drawer-overlay" hidden></div>
+    <aside
+      class="cart-drawer"
+      id="cart-drawer"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="cart-drawer-heading"
+      hidden
+    >
+      <div class="cart-drawer__header">
+        <h2 id="cart-drawer-heading">Your cart</h2>
+        <button
+          type="button"
+          class="cart-drawer__close"
+          id="cart-close"
+          aria-label="Close cart"
+        >
+          <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20">
+            <line
+              x1="5"
+              y1="5"
+              x2="19"
+              y2="19"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+            <line
+              x1="19"
+              y1="5"
+              x2="5"
+              y2="19"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+          </svg>
+        </button>
+      </div>
 
-    <div class="empty-state" id="empty-state" hidden>
-      <svg aria-hidden="true" viewBox="0 0 64 64" width="56" height="56">
-        <circle cx="32" cy="32" r="28" fill="none" stroke="currentColor" stroke-width="2"/>
-        <line x1="22" y1="40" x2="42" y2="24" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <div class="cart-drawer__body" id="cart-items">
+        <!-- cart line items injected by JS -->
+      </div>
+
+      <div class="cart-drawer__empty" id="cart-empty" hidden>
+        <p>Your cart is empty.</p>
+        <p class="cart-drawer__empty-sub">
+          Browse the catalog and add something you like.
+        </p>
+      </div>
+
+      <div class="cart-drawer__footer" id="cart-footer">
+        <div class="cart-drawer__row">
+          <span>Items</span>
+          <span id="cart-item-count">0</span>
+        </div>
+        <div class="cart-drawer__row cart-drawer__row--total">
+          <span>Subtotal</span>
+          <span id="cart-subtotal">$0.00</span>
+        </div>
+        <button
+          type="button"
+          class="btn btn--primary btn--block"
+          id="checkout-btn"
+        >
+          Checkout
+        </button>
+      </div>
+    </aside>
+
+    <!-- ============ CHECKOUT CONFIRMATION MODAL ============ -->
+    <div class="modal-overlay" id="confirm-overlay" hidden></div>
+    <div
+      class="modal"
+      id="confirm-modal"
+      role="alertdialog"
+      aria-modal="true"
+      aria-labelledby="confirm-heading"
+      aria-describedby="confirm-desc"
+      hidden
+    >
+      <svg
+        class="modal__icon"
+        aria-hidden="true"
+        viewBox="0 0 48 48"
+        width="48"
+        height="48"
+      >
+        <circle
+          cx="24"
+          cy="24"
+          r="22"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        />
+        <path
+          d="M14 25l7 7 13-15"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
       </svg>
-      <h2>Nothing matches those filters</h2>
-      <p>Try widening the price range, clearing a category, or searching a different term.</p>
-      <button type="button" id="empty-reset">Clear all filters</button>
+      <h2 id="confirm-heading">Order placed</h2>
+      <p id="confirm-desc">
+        Thanks for shopping with Markhaus. A confirmation for order
+        <strong id="confirm-order-id"></strong> would normally land in your
+        inbox.
+      </p>
+      <button type="button" class="btn btn--primary" id="confirm-close">
+        Continue shopping
+      </button>
     </div>
-  </main>
-</div>
 
-<!-- ============ CART DRAWER ============ -->
-<div class="drawer-overlay" id="drawer-overlay" hidden></div>
-<aside class="cart-drawer" id="cart-drawer" role="dialog" aria-modal="true" aria-labelledby="cart-drawer-heading" hidden>
-  <div class="cart-drawer__header">
-    <h2 id="cart-drawer-heading">Your cart</h2>
-    <button type="button" class="cart-drawer__close" id="cart-close" aria-label="Close cart">
-      <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20">
-        <line x1="5" y1="5" x2="19" y2="19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        <line x1="19" y1="5" x2="5" y2="19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-      </svg>
-    </button>
-  </div>
+    <footer class="site-footer">
+      <p>
+        Markhaus — a front-end demo built with HTML, CSS and vanilla JavaScript.
+        No data leaves your browser.
+      </p>
+      <p>Made By Zainab faraz</p>
+    </footer>
 
-  <div class="cart-drawer__body" id="cart-items">
-    <!-- cart line items injected by JS -->
-  </div>
-
-  <div class="cart-drawer__empty" id="cart-empty" hidden>
-    <p>Your cart is empty.</p>
-    <p class="cart-drawer__empty-sub">Browse the catalog and add something you like.</p>
-  </div>
-
-  <div class="cart-drawer__footer" id="cart-footer">
-    <div class="cart-drawer__row">
-      <span>Items</span>
-      <span id="cart-item-count">0</span>
-    </div>
-    <div class="cart-drawer__row cart-drawer__row--total">
-      <span>Subtotal</span>
-      <span id="cart-subtotal">$0.00</span>
-    </div>
-    <button type="button" class="btn btn--primary btn--block" id="checkout-btn">Checkout</button>
-  </div>
-</aside>
-
-<!-- ============ CHECKOUT CONFIRMATION MODAL ============ -->
-<div class="modal-overlay" id="confirm-overlay" hidden></div>
-<div class="modal" id="confirm-modal" role="alertdialog" aria-modal="true" aria-labelledby="confirm-heading" aria-describedby="confirm-desc" hidden>
-  <svg class="modal__icon" aria-hidden="true" viewBox="0 0 48 48" width="48" height="48">
-    <circle cx="24" cy="24" r="22" fill="none" stroke="currentColor" stroke-width="2"/>
-    <path d="M14 25l7 7 13-15" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-  </svg>
-  <h2 id="confirm-heading">Order placed</h2>
-  <p id="confirm-desc">Thanks for shopping with Markhaus. A confirmation for order <strong id="confirm-order-id"></strong> would normally land in your inbox.</p>
-  <button type="button" class="btn btn--primary" id="confirm-close">Continue shopping</button>
-</div>
-
-<footer class="site-footer">
-  <p>Markhaus — a front-end demo built with HTML, CSS and vanilla JavaScript. No data leaves your browser.</p>
-</footer>
-
-<script src="js/products.js"></script>
-<script src="js/cart.js"></script>
-<script src="js/app.js"></script>
-</body>
+    <script src="js/products.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/app.js"></script>
+  </body>
 </html>
