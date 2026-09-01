@@ -2,6 +2,7 @@ import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import {
   BarChart3,
+  ChevronRight,
   CreditCard,
   LayoutDashboard,
   LogOut,
@@ -15,7 +16,7 @@ import { useAuth } from "../context/AuthContext";
 import "./Sidebar.css";
 
 /**
- * Sidebar - Navigation menu for the dashboard
+ * Sidebar - Premium enterprise dashboard navigation
  */
 export const Sidebar = ({ isOpen, setIsOpen }) => {
   const navigate = useNavigate();
@@ -23,74 +24,187 @@ export const Sidebar = ({ isOpen, setIsOpen }) => {
   const { logout } = useAuth();
 
   const menuItems = [
-    { label: "Dashboard", path: "/dashboard", icon: LayoutDashboard },
-    { label: "Analytics", path: "/analytics", icon: BarChart3 },
-    { label: "Users", path: "/users", icon: Users },
-    { label: "Products", path: "/products", icon: Package },
-    { label: "Transactions", path: "/transactions", icon: CreditCard },
-    { label: "Settings", path: "/settings", icon: Settings },
+    {
+      label: "Dashboard",
+      description: "Overview",
+      path: "/dashboard",
+      icon: LayoutDashboard,
+    },
+    {
+      label: "Analytics",
+      description: "Insights & reports",
+      path: "/analytics",
+      icon: BarChart3,
+    },
+    {
+      label: "Users",
+      description: "Manage accounts",
+      path: "/users",
+      icon: Users,
+    },
+    {
+      label: "Products",
+      description: "Inventory & catalog",
+      path: "/products",
+      icon: Package,
+    },
+    {
+      label: "Transactions",
+      description: "Payments & activity",
+      path: "/transactions",
+      icon: CreditCard,
+    },
   ];
+
+  const settingsItem = {
+    label: "Settings",
+    description: "System preferences",
+    path: "/settings",
+    icon: Settings,
+  };
+
+  const handleNavigation = (path) => {
+    navigate(path);
+    setIsOpen(false);
+  };
 
   const handleLogout = () => {
     logout();
     navigate("/login");
   };
 
+  const isActive = (path) => location.pathname === path;
+
   return (
     <>
-      <div className={`sidebar ${isOpen ? "open" : ""}`}>
+      <aside className={`sidebar ${isOpen ? "open" : ""}`}>
+        {/* Brand Header */}
         <div className="sidebar-header">
-          <div className="logo">
-            <span className="logo-icon">
-              <Sparkles size={18} />
+          <button
+            className="brand"
+            onClick={() => handleNavigation("/dashboard")}
+            aria-label="Go to dashboard"
+          >
+            <span className="brand-mark">
+              <Sparkles size={18} strokeWidth={2.2} />
             </span>
-            <div className="logo-copy">
-              <span className="logo-text">NovaOps</span>
-              <span className="logo-subtext">Control center</span>
+
+            <span className="brand-copy">
+              <span className="brand-name">NovaOps</span>
+              <span className="brand-subtitle">Enterprise Control</span>
+            </span>
+          </button>
+
+          <button
+            className="close-btn"
+            onClick={() => setIsOpen(false)}
+            aria-label="Close navigation"
+          >
+            <X size={18} strokeWidth={2} />
+          </button>
+        </div>
+
+        {/* Navigation */}
+        <div className="sidebar-content">
+          <div className="nav-section">
+            <div className="nav-section-heading">
+              <span>Workspace</span>
+            </div>
+
+            <nav className="sidebar-nav" aria-label="Primary navigation">
+              {menuItems.map((item) => {
+                const Icon = item.icon;
+                const active = isActive(item.path);
+
+                return (
+                  <button
+                    key={item.path}
+                    className={`nav-link ${active ? "active" : ""}`}
+                    onClick={() => handleNavigation(item.path)}
+                  >
+                    <span className="nav-icon">
+                      <Icon size={18} strokeWidth={active ? 2.2 : 1.9} />
+                    </span>
+
+                    <span className="nav-copy">
+                      <span className="nav-label">{item.label}</span>
+
+                      <span className="nav-description">
+                        {item.description}
+                      </span>
+                    </span>
+
+                    <ChevronRight size={15} className="nav-arrow" />
+                  </button>
+                );
+              })}
+            </nav>
+          </div>
+
+          {/* Settings */}
+          <div className="nav-section nav-section-settings">
+            <div className="nav-section-heading">
+              <span>System</span>
+            </div>
+
+            <button
+              className={`nav-link ${
+                isActive(settingsItem.path) ? "active" : ""
+              }`}
+              onClick={() => handleNavigation(settingsItem.path)}
+            >
+              <span className="nav-icon">
+                <Settings
+                  size={18}
+                  strokeWidth={isActive(settingsItem.path) ? 2.2 : 1.9}
+                />
+              </span>
+
+              <span className="nav-copy">
+                <span className="nav-label">{settingsItem.label}</span>
+
+                <span className="nav-description">
+                  {settingsItem.description}
+                </span>
+              </span>
+
+              <ChevronRight size={15} className="nav-arrow" />
+            </button>
+          </div>
+        </div>
+
+        {/* Bottom Area */}
+        <div className="sidebar-bottom">
+          {/* Creator Credit */}
+          <div className="creator-card">
+            <div className="creator-icon">
+              <Sparkles size={13} />
+            </div>
+
+            <div className="creator-copy">
+              <span>Designed & built by</span>
+              <strong>Zainab</strong>
             </div>
           </div>
-          <button className="close-btn" onClick={() => setIsOpen(false)}>
-            <X size={18} />
-          </button>
-        </div>
 
-        <nav className="sidebar-nav" aria-label="Sidebar Navigation">
-          {menuItems.map((item) => {
-            const Icon = item.icon;
-            const isActive = location.pathname === item.path;
-
-            return (
-              <button
-                key={item.path}
-                className={`nav-link ${isActive ? "active" : ""}`}
-                onClick={() => {
-                  navigate(item.path);
-                  setIsOpen(false);
-                }}
-              >
-                <span className="nav-icon">
-                  <Icon size={18} />
-                </span>
-                <span className="nav-label">{item.label}</span>
-              </button>
-            );
-          })}
-        </nav>
-
-        <div className="sidebar-footer">
-          <div className="sidebar-branding" aria-label="Made by Zainab">
-            <span>Made by</span>
-            <strong>Zainab</strong>
-          </div>
+          {/* Logout */}
           <button className="logout-btn" onClick={handleLogout}>
-            <LogOut size={16} />
-            Logout
+            <span className="logout-icon">
+              <LogOut size={16} strokeWidth={2} />
+            </span>
+
+            <span>Sign out</span>
           </button>
         </div>
-      </div>
+      </aside>
 
+      {/* Mobile Overlay */}
       {isOpen && (
-        <div className="sidebar-overlay" onClick={() => setIsOpen(false)} />
+        <div
+          className="sidebar-overlay"
+          onClick={() => setIsOpen(false)}
+          aria-hidden="true"
+        />
       )}
     </>
   );
