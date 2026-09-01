@@ -8,6 +8,26 @@
       name="description"
       content="Markhaus is a multi-category marketplace demo: browse electronics, clothing, accessories, home goods and gaming gear, filter and sort in real time, and check out with a persistent cart."
     />
+    <meta name="theme-color" content="#0d1b2a" />
+    <meta name="color-scheme" content="light" />
+
+    <!-- Social preview -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Markhaus" />
+    <meta property="og:title" content="Markhaus — Every category, one cart" />
+    <meta
+      property="og:description"
+      content="A multi-category marketplace demo: instant filtering, live search, sorting, and a cart that survives refresh. Runs entirely in your browser."
+    />
+    <meta name="twitter:card" content="summary" />
+
+    <!-- Inline SVG favicon — no extra file needed -->
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230d1b2a'/%3E%3Ctext x='32' y='45' font-family='Arial, Helvetica, sans-serif' font-size='38' font-weight='700' text-anchor='middle' fill='%23ff6a3d'%3EM%3C/text%3E%3C/svg%3E"
+    />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -16,7 +36,15 @@
     />
     <link rel="stylesheet" href="css/style.css" />
   </head>
-  <body>
+  <!-- id="top" fixes the #top anchor links in the hero pill + footer -->
+  <body id="top">
+    <noscript>
+      <div class="noscript-banner">
+        <strong>JavaScript is disabled.</strong> Markhaus renders its catalog,
+        filters and cart with JavaScript — please enable it to browse products.
+      </div>
+    </noscript>
+
     <a class="skip-link" href="#main-content">Skip to product listing</a>
 
     <!-- ============ HEADER ============ -->
@@ -67,6 +95,10 @@
             name="search"
             placeholder="Search headphones, hoodies, cast-iron…"
             autocomplete="off"
+            spellcheck="false"
+            autocapitalize="off"
+            autocorrect="off"
+            enterkeyhint="search"
           />
         </form>
 
@@ -107,6 +139,13 @@
           Filter by category and price, search as you type, sort however you
           like — everything updates instantly, and your cart survives a refresh.
         </p>
+        <div class="hero__tags">
+          <span class="hero__tag">Electronics</span>
+          <span class="hero__tag">Clothing</span>
+          <span class="hero__tag">Accessories</span>
+          <span class="hero__tag">Home &amp; Living</span>
+          <span class="hero__tag">Gaming</span>
+        </div>
       </div>
     </section>
 
