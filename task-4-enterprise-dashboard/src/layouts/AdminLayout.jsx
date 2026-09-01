@@ -21,6 +21,10 @@ export const AdminLayout = ({ children, title, isLive = false }) => {
         />
 
         <main className="admin-content">{children}</main>
+
+        <footer className="app-footer">
+          <p>Made By Zainab faraz</p>
+        </footer>
       </div>
     </div>
   );
