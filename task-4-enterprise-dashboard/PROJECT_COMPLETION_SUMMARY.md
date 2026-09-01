@@ -254,8 +254,8 @@ Total Lines of Code: 5000+
 
 ```
 Admin Account:
-  Email: admin@progree.com
-  Password: Admin123!
+  Email: zainab@admin.com
+  Password: zainab1234
 
 Demo Account:
   Email: demo@progree.com
