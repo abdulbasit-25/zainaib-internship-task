@@ -3,12 +3,12 @@
  */
 
 /**
- * Format currency to USD
+ * Format currency to PKR
  */
 export const formatCurrency = (value) => {
-  return new Intl.NumberFormat("en-US", {
+  return new Intl.NumberFormat("en-PK", {
     style: "currency",
-    currency: "USD",
+    currency: "PKR",
     minimumFractionDigits: 2,
   }).format(value);
 };
