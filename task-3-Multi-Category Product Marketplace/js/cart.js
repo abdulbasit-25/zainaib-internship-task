@@ -16,7 +16,6 @@ const Cart = (() => {
 
   let items = [];
 
-  /** Reads the cart out of LocalStorage into memory. */
   function loadCart() {
     try {
       const raw = localStorage.getItem(STORAGE_KEY);
@@ -29,7 +28,6 @@ const Cart = (() => {
     return getItems();
   }
 
-  /** Writes the current in-memory cart to LocalStorage. */
   function saveCart() {
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
@@ -38,7 +36,6 @@ const Cart = (() => {
     }
   }
 
-  /** Returns a shallow copy so callers can't mutate internal state directly. */
   function getItems() {
     return items.map((item) => ({ ...item }));
   }
@@ -121,7 +118,6 @@ const Cart = (() => {
     return items.reduce((sum, item) => sum + item.quantity, 0);
   }
 
-  /** Cart subtotal in dollars, rounded to two decimal places. */
   function calculateCartTotal() {
     const total = items.reduce(
       (sum, item) => sum + item.price * item.quantity,
