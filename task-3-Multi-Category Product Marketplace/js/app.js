@@ -255,6 +255,13 @@ function renderProducts(products) {
   els.productGrid.innerHTML = products.map(renderProductCard).join("");
 }
 
+function formatPrice(value) {
+  return `PKR ${Number(value).toLocaleString("en-PK", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  })}`;
+}
+
 function renderProductCard(product) {
   const outOfStock = product.stock <= 0;
   const lowStock = !outOfStock && product.stock <= 5;
@@ -280,7 +287,7 @@ function renderProductCard(product) {
         <h3 class="product-card__name">${escapeHtml(product.name)}</h3>
         <p class="product-card__desc">${escapeHtml(product.description)}</p>
         <div class="product-card__meta">
-          <span class="product-card__price">$${product.price.toFixed(2)}</span>
+          <span class="product-card__price">${formatPrice(product.price)}</span>
           <span class="product-card__rating">${starIcon()} ${product.rating.toFixed(1)}</span>
         </div>
         <span class="${stockLineClass}">${stockLineText}</span>
@@ -364,7 +371,7 @@ function renderCart() {
 
   els.cartItems.innerHTML = items.map(renderCartLine).join("");
   els.cartItemCount.textContent = itemCount;
-  els.cartSubtotal.textContent = `$${subtotal.toFixed(2)}`;
+  els.cartSubtotal.textContent = formatPrice(subtotal);
 }
 
 function renderCartLine(item) {
@@ -378,7 +385,7 @@ function renderCartLine(item) {
       </div>
       <div class="cart-line__info">
         <span class="cart-line__name">${escapeHtml(item.name)}</span>
-        <span class="cart-line__unit-price">$${item.price.toFixed(2)} each</span>
+        <span class="cart-line__unit-price">${formatPrice(item.price)} each</span>
         <div class="cart-line__qty">
           <button type="button" class="cart-line__qty-btn" data-action="decrease" data-id="${item.id}" aria-label="Decrease quantity of ${escapeHtml(item.name)}">−</button>
           <span class="cart-line__qty-value" aria-live="polite">${item.quantity}</span>
@@ -386,7 +393,7 @@ function renderCartLine(item) {
         </div>
       </div>
       <div class="cart-line__end">
-        <span class="cart-line__total">$${lineTotal}</span>
+        <span class="cart-line__total">${formatPrice(lineTotal)}</span>
         <button type="button" class="cart-line__remove" data-action="remove" data-id="${item.id}">Remove</button>
       </div>
     </div>
