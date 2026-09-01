@@ -7,7 +7,6 @@ import { useTable } from "../hooks";
 import {
   startMetricsStream,
   getMetricsWithChange,
-  initialMetrics,
 } from "../services/mockApiService";
 import {
   activityFeed,
@@ -29,7 +28,7 @@ export const DashboardPage = () => {
   }, []);
 
   // Get metrics with change indicators
-  const metricsDisplay = getMetricsWithChange(metrics, initialMetrics);
+  const metricsDisplay = getMetricsWithChange(metrics, mockInitialMetrics);
 
   // Setup activity table
   const activityTable = useTable(activityFeed, "id");
