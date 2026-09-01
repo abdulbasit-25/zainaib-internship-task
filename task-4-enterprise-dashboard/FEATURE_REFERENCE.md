@@ -2,10 +2,10 @@
 
 ## 🔐 LOGIN CREDENTIALS
 
-| Account | Email             | Password  | Role  |
-| ------- | ----------------- | --------- | ----- |
-| Admin   | admin@progree.com | Admin123! | Admin |
-| Demo    | demo@progree.com  | Demo123!  | User  |
+| Account | Email            | Password   | Role  |
+| ------- | ---------------- | ---------- | ----- |
+| Admin   | zainab@admin.com | zainab1234 | Admin |
+| Demo    | demo@progree.com | Demo123!   | User  |
 
 ---
 
@@ -385,8 +385,8 @@ npm run build
 **Admin Login:**
 
 ```
-Email: admin@progree.com
-Password: Admin123!
+Email: zainab@admin.com
+Password: zainab1234
 ```
 
 ---
