@@ -12,7 +12,7 @@
  */
 
 const Cart = (() => {
-  const STORAGE_KEY = "markhaus_cart_v1";
+  const STORAGE_KEY = "ZAYNÉ_cart_v1";
 
   let items = [];
 
@@ -123,7 +123,10 @@ const Cart = (() => {
 
   /** Cart subtotal in dollars, rounded to two decimal places. */
   function calculateCartTotal() {
-    const total = items.reduce((sum, item) => sum + item.price * item.quantity, 0);
+    const total = items.reduce(
+      (sum, item) => sum + item.price * item.quantity,
+      0,
+    );
     return Math.round(total * 100) / 100;
   }
 
