@@ -6,12 +6,12 @@ import "./LoginPage.css";
 /**
  * LoginPage - Authentication page
  * Demo credentials:
- * - admin@progree.com / Admin123!
+ * - zainab@admin.com / zainab1234
  * - demo@progree.com / Demo123!
  */
 export const LoginPage = () => {
-  const [email, setEmail] = useState("admin@progree.com");
-  const [password, setPassword] = useState("Admin123!");
+  const [email, setEmail] = useState("zainab@admin.com");
+  const [password, setPassword] = useState("zainab1234");
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
@@ -88,8 +88,8 @@ export const LoginPage = () => {
             <p>
               <strong>Admin Account:</strong>
             </p>
-            <p>Email: admin@progree.com</p>
-            <p>Password: Admin123!</p>
+            <p>Email: zainab@admin.com</p>
+            <p>Password: zainab1234</p>
           </div>
           <div className="credential-item">
             <p>
