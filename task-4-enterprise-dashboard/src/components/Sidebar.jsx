@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import {
   BarChart3,
@@ -75,6 +75,18 @@ export const Sidebar = ({ isOpen, setIsOpen }) => {
 
   const isActive = (path) => location.pathname === path;
 
+  // Close the mobile sidebar on Escape, matching the navbar dropdown behavior
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const handleEscape = (e) => {
+      if (e.key === "Escape") setIsOpen(false);
+    };
+
+    document.addEventListener("keydown", handleEscape);
+    return () => document.removeEventListener("keydown", handleEscape);
+  }, [isOpen, setIsOpen]);
+
   return (
     <>
       <aside className={`sidebar ${isOpen ? "open" : ""}`}>
@@ -104,7 +116,7 @@ export const Sidebar = ({ isOpen, setIsOpen }) => {
           </button>
         </div>
 
-        {/* Navigation */}
+        {/* Scrollable navigation area */}
         <div className="sidebar-content">
           <div className="nav-section">
             <div className="nav-section-heading">
@@ -121,6 +133,7 @@ export const Sidebar = ({ isOpen, setIsOpen }) => {
                     key={item.path}
                     className={`nav-link ${active ? "active" : ""}`}
                     onClick={() => handleNavigation(item.path)}
+                    aria-current={active ? "page" : undefined}
                   >
                     <span className="nav-icon">
                       <Icon size={18} strokeWidth={active ? 2.2 : 1.9} />
@@ -152,6 +165,7 @@ export const Sidebar = ({ isOpen, setIsOpen }) => {
                 isActive(settingsItem.path) ? "active" : ""
               }`}
               onClick={() => handleNavigation(settingsItem.path)}
+              aria-current={isActive(settingsItem.path) ? "page" : undefined}
             >
               <span className="nav-icon">
                 <Settings
@@ -173,9 +187,8 @@ export const Sidebar = ({ isOpen, setIsOpen }) => {
           </div>
         </div>
 
-        {/* Bottom Area */}
+        {/* Bottom Area — stays fixed while nav above scrolls */}
         <div className="sidebar-bottom">
-          {/* Creator Credit */}
           <div className="creator-card">
             <div className="creator-icon">
               <Sparkles size={13} />
@@ -187,7 +200,6 @@ export const Sidebar = ({ isOpen, setIsOpen }) => {
             </div>
           </div>
 
-          {/* Logout */}
           <button className="logout-btn" onClick={handleLogout}>
             <span className="logout-icon">
               <LogOut size={16} strokeWidth={2} />
