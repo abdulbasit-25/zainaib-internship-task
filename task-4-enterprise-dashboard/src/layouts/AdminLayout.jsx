@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Sidebar } from "./Sidebar";
-import { Navbar } from "./Navbar";
+import { Sidebar } from "../components/Sidebar";
+import { Navbar } from "../components/Navbar";
 import "./AdminLayout.css";
 
 /**
@@ -21,10 +21,6 @@ export const AdminLayout = ({ children, title, isLive = false }) => {
         />
 
         <main className="admin-content">{children}</main>
-
-        <footer className="app-footer">
-          <p>Made By Zainab faraz</p>
-        </footer>
       </div>
     </div>
   );
