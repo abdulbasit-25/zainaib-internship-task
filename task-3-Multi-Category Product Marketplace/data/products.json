@@ -1,0 +1,242 @@
+[
+  {
+    "id": 1,
+    "name": "Aurora Wireless Headphones",
+    "category": "Electronics",
+    "price": 129.99,
+    "rating": 4.6,
+    "image": "https://picsum.photos/seed/aurora-headphones/500/500",
+    "description": "Over-ear headphones with active noise cancellation, 40-hour battery life, and plush memory-foam ear cups for all-day listening.",
+    "stock": 18
+  },
+  {
+    "id": 2,
+    "name": "Pulse Fitness Smartwatch",
+    "category": "Electronics",
+    "price": 189.5,
+    "rating": 4.3,
+    "image": "https://picsum.photos/seed/pulse-smartwatch/500/500",
+    "description": "Track heart rate, sleep, and workouts with a bright always-on display and seven-day battery life.",
+    "stock": 12
+  },
+  {
+    "id": 3,
+    "name": "Nimbus Portable Speaker",
+    "category": "Electronics",
+    "price": 59.99,
+    "rating": 4.1,
+    "image": "https://picsum.photos/seed/nimbus-speaker/500/500",
+    "description": "Compact, waterproof Bluetooth speaker with rich bass and 12 hours of playtime, perfect for outdoor adventures.",
+    "stock": 25
+  },
+  {
+    "id": 4,
+    "name": "Vector Mechanical Keyboard",
+    "category": "Electronics",
+    "price": 94.0,
+    "rating": 4.7,
+    "image": "https://picsum.photos/seed/vector-keyboard/500/500",
+    "description": "Hot-swappable mechanical keyboard with tactile switches, per-key RGB lighting, and a sturdy aluminum frame.",
+    "stock": 9
+  },
+  {
+    "id": 5,
+    "name": "Halo 4K Webcam",
+    "category": "Electronics",
+    "price": 74.99,
+    "rating": 4.0,
+    "image": "https://picsum.photos/seed/halo-webcam/500/500",
+    "description": "Crisp 4K video with auto-framing and low-light correction, ideal for streaming and video calls.",
+    "stock": 0
+  },
+  {
+    "id": 6,
+    "name": "Drift Oversized Hoodie",
+    "category": "Clothing",
+    "price": 54.0,
+    "rating": 4.5,
+    "image": "https://picsum.photos/seed/drift-hoodie/500/500",
+    "description": "Heavyweight brushed-fleece hoodie with a relaxed fit and a soft, fade-resistant garment dye.",
+    "stock": 30
+  },
+  {
+    "id": 7,
+    "name": "Meridian Slim Chinos",
+    "category": "Clothing",
+    "price": 48.5,
+    "rating": 4.2,
+    "image": "https://picsum.photos/seed/meridian-chinos/500/500",
+    "description": "Stretch cotton chinos tailored for a slim fit, with a reinforced waistband that holds its shape all day.",
+    "stock": 22
+  },
+  {
+    "id": 8,
+    "name": "Coastline Linen Shirt",
+    "category": "Clothing",
+    "price": 39.99,
+    "rating": 4.4,
+    "image": "https://picsum.photos/seed/coastline-shirt/500/500",
+    "description": "Breathable pure linen shirt with a relaxed cut, woven for warm-weather comfort and easy layering.",
+    "stock": 16
+  },
+  {
+    "id": 9,
+    "name": "Alpine Insulated Jacket",
+    "category": "Clothing",
+    "price": 129.0,
+    "rating": 4.8,
+    "image": "https://picsum.photos/seed/alpine-jacket/500/500",
+    "description": "Lightweight yet warm packable jacket with water-resistant shell fabric, built for cold-weather commutes.",
+    "stock": 7
+  },
+  {
+    "id": 10,
+    "name": "Sable Merino Sweater",
+    "category": "Clothing",
+    "price": 68.0,
+    "rating": 4.3,
+    "image": "https://picsum.photos/seed/sable-sweater/500/500",
+    "description": "Fine-gauge merino wool sweater that regulates temperature naturally and resists odor and wrinkles.",
+    "stock": 14
+  },
+  {
+    "id": 11,
+    "name": "Compass Leather Wallet",
+    "category": "Accessories",
+    "price": 34.99,
+    "rating": 4.6,
+    "image": "https://picsum.photos/seed/compass-wallet/500/500",
+    "description": "Slim full-grain leather wallet with RFID-blocking lining and six card slots that age beautifully over time.",
+    "stock": 40
+  },
+  {
+    "id": 12,
+    "name": "Ridge Polarized Sunglasses",
+    "category": "Accessories",
+    "price": 45.0,
+    "rating": 4.4,
+    "image": "https://picsum.photos/seed/ridge-sunglasses/500/500",
+    "description": "Lightweight polarized lenses cut glare in bright conditions, set in a durable acetate frame.",
+    "stock": 20
+  },
+  {
+    "id": 13,
+    "name": "Anchor Canvas Backpack",
+    "category": "Accessories",
+    "price": 79.0,
+    "rating": 4.7,
+    "image": "https://picsum.photos/seed/anchor-backpack/500/500",
+    "description": "Water-resistant waxed canvas backpack with a padded 15-inch laptop sleeve and adjustable leather straps.",
+    "stock": 11
+  },
+  {
+    "id": 14,
+    "name": "Lumen Stainless Watch",
+    "category": "Accessories",
+    "price": 149.99,
+    "rating": 4.5,
+    "image": "https://picsum.photos/seed/lumen-watch/500/500",
+    "description": "Minimalist stainless steel watch with a sapphire crystal face and a five-year battery life.",
+    "stock": 8
+  },
+  {
+    "id": 15,
+    "name": "Tether Woven Belt",
+    "category": "Accessories",
+    "price": 24.5,
+    "rating": 4.0,
+    "image": "https://picsum.photos/seed/tether-belt/500/500",
+    "description": "Adjustable woven belt with a matte buckle, built to pair with both casual and tailored outfits.",
+    "stock": 35
+  },
+  {
+    "id": 16,
+    "name": "Hearth Ceramic Dinnerware Set",
+    "category": "Home",
+    "price": 89.0,
+    "rating": 4.6,
+    "image": "https://picsum.photos/seed/hearth-dinnerware/500/500",
+    "description": "16-piece stoneware dinnerware set with a matte reactive glaze, dishwasher and microwave safe.",
+    "stock": 13
+  },
+  {
+    "id": 17,
+    "name": "Ember Aroma Diffuser",
+    "category": "Home",
+    "price": 42.99,
+    "rating": 4.3,
+    "image": "https://picsum.photos/seed/ember-diffuser/500/500",
+    "description": "Ultrasonic diffuser with a whisper-quiet motor and seven ambient light settings for a calmer room.",
+    "stock": 27
+  },
+  {
+    "id": 18,
+    "name": "Loft Linen Bedding Set",
+    "category": "Home",
+    "price": 109.0,
+    "rating": 4.8,
+    "image": "https://picsum.photos/seed/loft-bedding/500/500",
+    "description": "Stonewashed linen duvet cover and pillowcases that soften with every wash for a lived-in feel.",
+    "stock": 6
+  },
+  {
+    "id": 19,
+    "name": "Grove Cast-Iron Skillet",
+    "category": "Home",
+    "price": 54.99,
+    "rating": 4.9,
+    "image": "https://picsum.photos/seed/grove-skillet/500/500",
+    "description": "Pre-seasoned 12-inch cast-iron skillet built to go from stovetop to oven and last for generations.",
+    "stock": 19
+  },
+  {
+    "id": 20,
+    "name": "Terra Potted Plant Trio",
+    "category": "Home",
+    "price": 36.5,
+    "rating": 4.2,
+    "image": "https://picsum.photos/seed/terra-plants/500/500",
+    "description": "Three low-maintenance potted plants in matching ceramic planters, suited to low and medium light.",
+    "stock": 0
+  },
+  {
+    "id": 21,
+    "name": "Vertex Pro Controller",
+    "category": "Gaming",
+    "price": 69.99,
+    "rating": 4.6,
+    "image": "https://picsum.photos/seed/vertex-controller/500/500",
+    "description": "Ergonomic wireless controller with remappable back paddles and adjustable trigger stops.",
+    "stock": 24
+  },
+  {
+    "id": 22,
+    "name": "Nova Curved Gaming Monitor",
+    "category": "Gaming",
+    "price": 329.0,
+    "rating": 4.7,
+    "image": "https://picsum.photos/seed/nova-monitor/500/500",
+    "description": "27-inch curved 165Hz display with 1ms response time and factory-calibrated color accuracy.",
+    "stock": 5
+  },
+  {
+    "id": 23,
+    "name": "Cipher Gaming Headset",
+    "category": "Gaming",
+    "price": 84.0,
+    "rating": 4.4,
+    "image": "https://picsum.photos/seed/cipher-headset/500/500",
+    "description": "7.1 surround sound headset with a detachable noise-canceling mic and memory-foam cushions.",
+    "stock": 17
+  },
+  {
+    "id": 24,
+    "name": "Zenith Gaming Chair",
+    "category": "Gaming",
+    "price": 219.99,
+    "rating": 4.1,
+    "image": "https://picsum.photos/seed/zenith-chair/500/500",
+    "description": "Ergonomic gaming chair with 4D armrests, a reclining backrest, and breathable performance fabric.",
+    "stock": 10
+  }
+]
