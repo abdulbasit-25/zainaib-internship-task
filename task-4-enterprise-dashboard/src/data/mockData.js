@@ -229,7 +229,7 @@ export const activityFeed = [
   {
     id: 1,
     type: "sale",
-    message: "New sale of $2,500 from John Smith",
+    message: "New sale of PKR 2,500 from John Smith",
     timestamp: "2 minutes ago",
     iconKey: "sale",
   },
