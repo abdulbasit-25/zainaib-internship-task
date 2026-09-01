@@ -134,7 +134,7 @@ export function getMetricsWithChange(currentMetrics, previousMetrics) {
 
   return {
     totalRevenue: {
-      value: `$${(currentMetrics.totalRevenue / 1000).toFixed(1)}K`,
+      value: `PKR ${(currentMetrics.totalRevenue / 1000).toFixed(1)}K`,
       change: calculateChange(
         currentMetrics.totalRevenue,
         initialMetrics.totalRevenue,
