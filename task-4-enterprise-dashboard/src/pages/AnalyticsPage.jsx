@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { BarChart3, PackageCheck, TrendingUp, UsersRound } from "lucide-react";
 import { AdminLayout } from "../layouts/AdminLayout";
 import { ChartCard } from "../components/ChartCard";
 import {
@@ -173,22 +174,46 @@ export const AnalyticsPage = () => {
           <h2 className="section-title">Performance Summary</h2>
           <div className="summary-grid">
             <div className="summary-card">
-              <h4>📈 Revenue Growth</h4>
+              <h4>
+                <TrendingUp
+                  size={15}
+                  style={{ marginRight: 8, verticalAlign: "text-bottom" }}
+                />
+                Revenue Growth
+              </h4>
               <p className="summary-value">+23.5%</p>
               <p className="summary-detail">Week over week</p>
             </div>
             <div className="summary-card">
-              <h4>👥 User Acquisition</h4>
+              <h4>
+                <UsersRound
+                  size={15}
+                  style={{ marginRight: 8, verticalAlign: "text-bottom" }}
+                />
+                User Acquisition
+              </h4>
               <p className="summary-value">+445</p>
               <p className="summary-detail">New users this week</p>
             </div>
             <div className="summary-card">
-              <h4>📦 Order Fulfillment</h4>
+              <h4>
+                <PackageCheck
+                  size={15}
+                  style={{ marginRight: 8, verticalAlign: "text-bottom" }}
+                />
+                Order Fulfillment
+              </h4>
               <p className="summary-value">98.5%</p>
               <p className="summary-detail">On-time delivery rate</p>
             </div>
             <div className="summary-card">
-              <h4>💹 Revenue Per User</h4>
+              <h4>
+                <BarChart3
+                  size={15}
+                  style={{ marginRight: 8, verticalAlign: "text-bottom" }}
+                />
+                Revenue Per User
+              </h4>
               <p className="summary-value">$197</p>
               <p className="summary-detail">Average this period</p>
             </div>
