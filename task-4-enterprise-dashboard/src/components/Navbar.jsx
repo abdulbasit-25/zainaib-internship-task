@@ -1,5 +1,16 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Bell, ChevronDown, Menu, Search, Sparkles } from "lucide-react";
+import {
+  Bell,
+  CheckCircle2,
+  ChevronDown,
+  CircleDollarSign,
+  Menu,
+  MoonStar,
+  Search,
+  Sparkles,
+  SunMedium,
+  TriangleAlert,
+} from "lucide-react";
 import { useAuth } from "../context/AuthContext";
 import "./Navbar.css";
 
@@ -7,21 +18,21 @@ const notifications = [
   {
     id: 1,
     type: "transaction",
-    icon: "$",
+    icon: <CircleDollarSign size={16} />,
     text: "New transaction from John Smith",
     time: "2 minutes ago",
   },
   {
     id: 2,
     type: "warning",
-    icon: "!",
+    icon: <TriangleAlert size={16} />,
     text: "Low stock alert for Support Package",
     time: "15 minutes ago",
   },
   {
     id: 3,
     type: "system",
-    icon: "✓",
+    icon: <CheckCircle2 size={16} />,
     text: "System backup completed",
     time: "1 hour ago",
   },
@@ -30,7 +41,13 @@ const notifications = [
 /**
  * Navbar - Premium enterprise top navigation
  */
-export const Navbar = ({ title, onMenuClick, isLive }) => {
+export const Navbar = ({
+  title,
+  onMenuClick,
+  isLive,
+  theme,
+  onToggleTheme,
+}) => {
   const { user } = useAuth();
   const [showNotifications, setShowNotifications] = useState(false);
   const notificationRef = useRef(null);
@@ -151,6 +168,22 @@ export const Navbar = ({ title, onMenuClick, isLive }) => {
             </div>
           )}
         </div>
+
+        <button
+          type="button"
+          className="theme-toggle"
+          onClick={onToggleTheme}
+          aria-label="Toggle theme"
+          title={
+            theme === "dark" ? "Switch to light mode" : "Switch to dark mode"
+          }
+        >
+          {theme === "dark" ? (
+            <SunMedium size={18} strokeWidth={2} />
+          ) : (
+            <MoonStar size={18} strokeWidth={2} />
+          )}
+        </button>
 
         {/* Profile */}
         <button className="user-profile" type="button">
