@@ -8,7 +8,7 @@ import "./MetricCard.css";
 export const MetricCard = ({ title, value, change, icon, isPositive }) => {
   const changeClass = isPositive ? "positive" : "negative";
   const TrendIcon = isPositive ? ArrowUpRight : ArrowDownRight;
-  const IconComponent = typeof icon === "function" ? icon : null;
+  const IconComponent = React.isValidElement(icon) ? null : icon;
 
   return (
     <div className="metric-card fade-in">
