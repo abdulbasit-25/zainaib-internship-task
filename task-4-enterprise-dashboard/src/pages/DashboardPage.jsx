@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import {
   Activity,
+  ArrowDownRight,
+  ArrowUpRight,
   CircleDollarSign,
+  Minus,
   PackageCheck,
-  ShieldCheck,
   TrendingUp,
   UsersRound,
 } from "lucide-react";
@@ -21,6 +23,47 @@ import {
   initialMetrics as mockInitialMetrics,
 } from "../data/mockData";
 import "./DashboardPage.css";
+
+const quickStats = [
+  {
+    key: "revenue",
+    label: "Today's Revenue",
+    icon: CircleDollarSign,
+    value: "$12,450",
+    change: "8.2% vs yesterday",
+    direction: "up",
+  },
+  {
+    key: "pending",
+    label: "Pending Orders",
+    icon: PackageCheck,
+    value: "234",
+    change: "No change",
+    direction: "flat",
+  },
+  {
+    key: "signups",
+    label: "New Signups",
+    icon: UsersRound,
+    value: "42",
+    change: "15.3% vs last week",
+    direction: "up",
+  },
+  {
+    key: "aov",
+    label: "Avg Order Value",
+    icon: TrendingUp,
+    value: "$450",
+    change: "3.5% vs last month",
+    direction: "up",
+  },
+];
+
+const directionIcon = {
+  up: ArrowUpRight,
+  down: ArrowDownRight,
+  flat: Minus,
+};
 
 /**
  * DashboardPage - Main dashboard with real-time metrics
@@ -40,20 +83,6 @@ export const DashboardPage = () => {
 
   // Setup activity table
   const activityTable = useTable(activityFeed, "id");
-
-  const activityColumns = [
-    { key: "type", label: "Type" },
-    { key: "message", label: "Message" },
-    { key: "timestamp", label: "Time" },
-  ];
-
-  const renderActivityRow = (value, item) => {
-    if (item.type === "sale") return "Sale";
-    if (item.type === "user") return "User";
-    if (item.type === "alert") return "Alert";
-    if (item.type === "system") return "System";
-    return value;
-  };
 
   return (
     <AdminLayout title="Dashboard" isLive={isLive}>
@@ -114,60 +143,31 @@ export const DashboardPage = () => {
 
         {/* Quick Stats */}
         <div className="quick-stats">
-          <div className="stat-box">
-            <h4>
-              <CircleDollarSign
-                size={15}
-                style={{ marginRight: 8, verticalAlign: "text-bottom" }}
-              />
-              Today's Revenue
-            </h4>
-            <p className="stat-value">$12,450</p>
-            <p className="stat-change">↑ 8.2% vs yesterday</p>
-          </div>
-          <div className="stat-box">
-            <h4>
-              <PackageCheck
-                size={15}
-                style={{ marginRight: 8, verticalAlign: "text-bottom" }}
-              />
-              Pending Orders
-            </h4>
-            <p className="stat-value">234</p>
-            <p className="stat-change">→ No change</p>
-          </div>
-          <div className="stat-box">
-            <h4>
-              <UsersRound
-                size={15}
-                style={{ marginRight: 8, verticalAlign: "text-bottom" }}
-              />
-              New Signups
-            </h4>
-            <p className="stat-value">42</p>
-            <p className="stat-change">↑ 15.3% vs last week</p>
-          </div>
-          <div className="stat-box">
-            <h4>
-              <TrendingUp
-                size={15}
-                style={{ marginRight: 8, verticalAlign: "text-bottom" }}
-              />
-              Avg Order Value
-            </h4>
-            <p className="stat-value">$450</p>
-            <p className="stat-change">↑ 3.5% vs last month</p>
-          </div>
+          {quickStats.map((stat) => {
+            const StatIcon = stat.icon;
+            const ChangeIcon = directionIcon[stat.direction];
+
+            return (
+              <div className="stat-box" key={stat.key}>
+                <h4>
+                  <StatIcon size={15} className="stat-box-icon" />
+                  {stat.label}
+                </h4>
+                <p className="stat-value">{stat.value}</p>
+                <p className={`stat-change stat-change--${stat.direction}`}>
+                  <ChangeIcon size={13} className="stat-change-icon" />
+                  {stat.change}
+                </p>
+              </div>
+            );
+          })}
         </div>
 
         {/* Live Indicator Info */}
         <div className="info-box">
           <p>
-            <strong>
-              <Activity
-                size={14}
-                style={{ marginRight: 6, verticalAlign: "text-bottom" }}
-              />
+            <strong className="info-box-title">
+              <Activity size={14} className="info-box-icon" />
               Live Streaming Active:
             </strong>{" "}
             The metrics above update every 3 seconds with simulated data. This
