@@ -3,28 +3,31 @@
 }
 
 .settings-container {
-  max-width: 700px;
+  max-width: 760px;
   margin: 0 auto;
 }
 
 .settings-section {
-  background: white;
-  border: 1px solid #e5e7eb;
-  border-radius: 8px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
   padding: 24px;
   margin-bottom: 20px;
-  transition: all 0.3s ease;
+  box-shadow: var(--shadow-soft);
+  transition:
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
 }
 
 .settings-section:hover {
-  border-color: #3b82f6;
-  box-shadow: 0 10px 25px rgba(37, 99, 235, 0.1);
+  border-color: rgba(36, 87, 245, 0.2);
+  box-shadow: var(--shadow);
 }
 
 .section-title {
-  font-size: 16px;
-  font-weight: 600;
-  color: #1f2937;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text);
   margin: 0 0 16px 0;
 }
 
@@ -40,29 +43,33 @@
 }
 
 .form-group label {
-  font-size: 13px;
-  font-weight: 600;
-  color: #374151;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-soft);
   margin-bottom: 8px;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.08em;
 }
 
 .form-group input,
 .form-group select {
-  padding: 10px 12px;
-  border: 1px solid #e5e7eb;
-  border-radius: 6px;
-  font-size: 14px;
+  padding: 11px 12px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  font-size: 0.92rem;
   font-family: inherit;
+  background: var(--surface-soft);
   transition: all 0.2s ease;
 }
 
 .form-group input:focus,
 .form-group select:focus {
   outline: none;
-  border-color: #2563eb;
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+  border-color: rgba(36, 87, 245, 0.45);
+  box-shadow: 0 0 0 4px rgba(36, 87, 245, 0.08);
 }
 
 .form-group.checkbox {
@@ -77,7 +84,7 @@
   margin: 0;
   text-transform: none;
   letter-spacing: normal;
-  font-weight: 500;
+  font-weight: 600;
   cursor: pointer;
 }
 
@@ -92,7 +99,8 @@
   justify-content: space-between;
   align-items: center;
   padding: 12px 0;
-  border-bottom: 1px solid #f3f4f6;
+  border-bottom: 1px solid #edf2f7;
+  gap: 12px;
 }
 
 .security-info:last-child {
@@ -101,30 +109,34 @@
 
 .security-info p {
   margin: 0;
-  font-size: 14px;
-  color: #1f2937;
+  font-size: 0.9rem;
+  color: var(--text);
 }
 
 .btn-secondary {
-  padding: 8px 16px;
-  background: #f3f4f6;
-  border: 1px solid #e5e7eb;
-  border-radius: 6px;
-  font-size: 13px;
-  font-weight: 600;
+  padding: 9px 16px;
+  background: var(--surface-soft);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  font-size: 0.82rem;
+  font-weight: 700;
   cursor: pointer;
   transition: all 0.2s ease;
   white-space: nowrap;
 }
 
 .btn-secondary:hover {
-  background: #e5e7eb;
-  border-color: #9ca3af;
+  background: #edf3ff;
+  border-color: rgba(36, 87, 245, 0.2);
 }
 
 .danger-zone {
-  background: #fef2f2;
-  border-color: #fecaca;
+  background: linear-gradient(
+    180deg,
+    rgba(239, 68, 68, 0.04),
+    rgba(239, 68, 68, 0.02)
+  );
+  border-color: rgba(239, 68, 68, 0.2);
 }
 
 .danger-zone .section-title {
@@ -139,12 +151,12 @@
 
 .btn-danger {
   padding: 10px 16px;
-  background: #ef4444;
-  color: white;
+  background: var(--danger);
+  color: #fff;
   border: none;
-  border-radius: 6px;
-  font-size: 14px;
-  font-weight: 600;
+  border-radius: 12px;
+  font-size: 0.88rem;
+  font-weight: 700;
   cursor: pointer;
   transition: all 0.2s ease;
   width: fit-content;
@@ -152,11 +164,11 @@
 
 .btn-danger:hover {
   background: #dc2626;
-  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+  box-shadow: 0 12px 20px -16px rgba(239, 68, 68, 0.8);
 }
 
 .danger-actions p {
-  font-size: 12px;
+  font-size: 0.74rem;
   color: #991b1b;
   margin: 0;
 }
@@ -170,19 +182,21 @@
 
 .btn-primary {
   padding: 10px 24px;
-  background: #2563eb;
-  color: white;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: #fff;
   border: none;
-  border-radius: 6px;
-  font-size: 14px;
-  font-weight: 600;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: 700;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .btn-primary:hover {
-  background: #1d4ed8;
-  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+  transform: translateY(-1px);
+  box-shadow: 0 12px 24px -15px rgba(36, 87, 245, 0.8);
 }
 
 @keyframes fadeIn {
@@ -196,7 +210,6 @@
   }
 }
 
-/* Responsive */
 @media (max-width: 768px) {
   .settings-section {
     padding: 16px;
