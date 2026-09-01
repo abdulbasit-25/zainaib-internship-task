@@ -1,10 +1,3 @@
-/**
- * Utility Functions - Helper functions used throughout the application
- */
-
-/**
- * Format currency to PKR
- */
 export const formatCurrency = (value) => {
   return new Intl.NumberFormat("en-PK", {
     style: "currency",
@@ -13,16 +6,10 @@ export const formatCurrency = (value) => {
   }).format(value);
 };
 
-/**
- * Format number with commas
- */
 export const formatNumber = (value) => {
   return new Intl.NumberFormat("en-US").format(value);
 };
 
-/**
- * Format date
- */
 export const formatDate = (date) => {
   return new Intl.DateTimeFormat("en-US", {
     year: "numeric",
@@ -31,16 +18,10 @@ export const formatDate = (date) => {
   }).format(new Date(date));
 };
 
-/**
- * Format percentage
- */
 export const formatPercent = (value) => {
   return `${(value * 100).toFixed(2)}%`;
 };
 
-/**
- * Get status color
- */
 export const getStatusColor = (status) => {
   const colors = {
     Active: "#10b981",
@@ -55,9 +36,6 @@ export const getStatusColor = (status) => {
   return colors[status] || "#6b7280";
 };
 
-/**
- * Get status background color
- */
 export const getStatusBgColor = (status) => {
   const colors = {
     Active: "#ecfdf5",
@@ -72,9 +50,6 @@ export const getStatusBgColor = (status) => {
   return colors[status] || "#f3f4f6";
 };
 
-/**
- * Sort array by key
- */
 export const sortBy = (arr, key, order = "asc") => {
   return [...arr].sort((a, b) => {
     if (a[key] < b[key]) return order === "asc" ? -1 : 1;
@@ -83,26 +58,17 @@ export const sortBy = (arr, key, order = "asc") => {
   });
 };
 
-/**
- * Filter array by key and value
- */
 export const filterBy = (arr, key, value) => {
   return arr.filter((item) =>
     item[key].toString().toLowerCase().includes(value.toLowerCase()),
   );
 };
 
-/**
- * Get percentage change
- */
 export const getPercentageChange = (current, previous) => {
   if (previous === 0) return 0;
   return (((current - previous) / previous) * 100).toFixed(2);
 };
 
-/**
- * Generate random ID
- */
 export const generateId = () => {
   return Math.random().toString(36).substr(2, 9);
 };
