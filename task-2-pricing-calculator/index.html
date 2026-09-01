@@ -3,196 +3,180 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Professional Pricing Calculator | Zainab's Portfolio</title>
+    <title>Pricing Calculator | Zainab's Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-    <div class="container">
-      <!-- Header Section -->
-      <header class="header">
-        <div class="header-content">
-          <h1 class="header-title">Pricing Calculator</h1>
-          <p class="header-subtitle">
-            Calculate your pricing with dynamic volume discounts
-          </p>
+    <div class="sheet">
+      <!-- Letterhead -->
+      <header class="letterhead">
+        <div class="letterhead__mark" aria-hidden="true">$</div>
+        <div class="letterhead__text">
+          <h1 class="letterhead__title">Pricing Calculator</h1>
+          <p class="letterhead__subtitle">Quote out a price with volume discounts applied automatically</p>
         </div>
       </header>
 
-      <!-- Main Content -->
-      <main class="main-content">
-        <!-- Calculator Card -->
-        <div class="calculator-card">
-          <!-- Input Section -->
-          <section class="input-section">
-            <h2 class="section-title">Enter Details</h2>
+      <div class="calc">
+        <!-- Inputs -->
+        <section class="calc__inputs" aria-labelledby="inputs-heading">
+          <h2 id="inputs-heading" class="calc__heading">Line item</h2>
 
-            <form id="calculatorForm" class="form">
-              <!-- Product Name Field -->
-              <div class="form-group">
-                <label for="productName" class="form-label"
-                  >Product/Service Name</label
-                >
-                <input
-                  type="text"
-                  id="productName"
-                  class="form-input"
-                  placeholder="e.g., Web Development Service"
-                  value="Web Development Service"
-                  required
-                />
-                <span class="error-message" id="productNameError"></span>
+          <form id="calculatorForm" class="form" novalidate>
+            <div class="field">
+              <label for="productName" class="field__label">Product or service</label>
+              <input
+                type="text"
+                id="productName"
+                name="productName"
+                class="field__input"
+                placeholder="e.g., Web Development Service"
+                value="Web Development Service"
+                required
+              />
+              <span class="field__error" id="productNameError" role="alert"></span>
+            </div>
+
+            <div class="field-row">
+              <div class="field">
+                <label for="unitPrice" class="field__label">Unit price</label>
+                <div class="field__prefixed">
+                  <span class="field__prefix" aria-hidden="true">$</span>
+                  <input
+                    type="number"
+                    id="unitPrice"
+                    name="unitPrice"
+                    class="field__input field__input--number"
+                    placeholder="0.00"
+                    value="100"
+                    min="0"
+                    step="0.01"
+                    required
+                  />
+                </div>
+                <span class="field__error" id="unitPriceError" role="alert"></span>
               </div>
 
-              <!-- Unit Price Field -->
-              <div class="form-group">
-                <label for="unitPrice" class="form-label">Unit Price ($)</label>
-                <input
-                  type="number"
-                  id="unitPrice"
-                  class="form-input"
-                  placeholder="Enter unit price"
-                  value="100"
-                  min="0"
-                  step="0.01"
-                  required
-                />
-                <span class="error-message" id="unitPriceError"></span>
-              </div>
-
-              <!-- Quantity Field -->
-              <div class="form-group">
-                <label for="quantity" class="form-label"
-                  >Quantity (Units)</label
-                >
+              <div class="field">
+                <label for="quantity" class="field__label">Quantity</label>
                 <input
                   type="number"
                   id="quantity"
-                  class="form-input"
-                  placeholder="Enter quantity"
+                  name="quantity"
+                  class="field__input field__input--number"
+                  placeholder="0"
                   value="5"
                   min="0"
                   step="1"
                   required
                 />
-                <span class="error-message" id="quantityError"></span>
+                <span class="field__error" id="quantityError" role="alert"></span>
               </div>
+            </div>
 
-              <!-- Tax Rate Field -->
-              <div class="form-group">
-                <label for="taxRate" class="form-label">Tax Rate (%)</label>
+            <div class="field">
+              <label for="taxRate" class="field__label">Tax rate</label>
+              <div class="field__prefixed field__prefixed--suffix">
                 <input
                   type="number"
                   id="taxRate"
-                  class="form-input"
-                  placeholder="Enter tax rate"
+                  name="taxRate"
+                  class="field__input field__input--number"
+                  placeholder="0"
                   value="8"
                   min="0"
                   max="100"
                   step="0.01"
                   required
                 />
-                <span class="error-message" id="taxRateError"></span>
+                <span class="field__suffix" aria-hidden="true">%</span>
               </div>
-            </form>
-          </section>
-
-          <!-- Breakdown Section -->
-          <section class="breakdown-section">
-            <h2 class="section-title">Pricing Breakdown</h2>
-
-            <div class="breakdown-grid">
-              <!-- Subtotal Card -->
-              <div class="breakdown-card">
-                <div class="breakdown-label">Subtotal</div>
-                <div class="breakdown-value" id="subtotalValue">$500.00</div>
-              </div>
-
-              <!-- Discount Card -->
-              <div class="breakdown-card highlight-discount">
-                <div class="breakdown-label">Discount Applied</div>
-                <div class="breakdown-value discount-value" id="discountValue">
-                  5% ($25.00)
-                </div>
-              </div>
-
-              <!-- After Discount Card -->
-              <div class="breakdown-card">
-                <div class="breakdown-label">After Discount</div>
-                <div class="breakdown-value" id="afterDiscountValue">
-                  $475.00
-                </div>
-              </div>
-
-              <!-- Tax Card -->
-              <div class="breakdown-card">
-                <div class="breakdown-label">Tax (8%)</div>
-                <div class="breakdown-value tax-value" id="taxValue">
-                  $38.00
-                </div>
-              </div>
-
-              <!-- Final Total Card -->
-              <div class="breakdown-card highlight-total">
-                <div class="breakdown-label">Final Total</div>
-                <div
-                  class="breakdown-value final-total-value"
-                  id="finalTotalValue"
-                >
-                  $513.00
-                </div>
-              </div>
-
-              <!-- Discount Tier Info -->
-              <div class="breakdown-card discount-tier">
-                <div class="breakdown-label">Discount Tier</div>
-                <div class="breakdown-value tier-badge" id="discountTierValue">
-                  5-9 Items: 5%
-                </div>
-              </div>
+              <span class="field__error" id="taxRateError" role="alert"></span>
             </div>
-          </section>
+          </form>
 
-          <!-- Volume Discount Info -->
-          <section class="discount-info-section">
-            <h3 class="discount-info-title">📊 Volume Discount Structure</h3>
-            <div class="discount-tiers">
-              <div class="tier-row">
-                <span class="tier-range">1–4 items</span>
-                <span class="tier-discount">0% discount</span>
-              </div>
-              <div class="tier-row">
-                <span class="tier-range">5–9 items</span>
-                <span class="tier-discount">5% discount</span>
-              </div>
-              <div class="tier-row">
-                <span class="tier-range">10–19 items</span>
-                <span class="tier-discount">10% discount</span>
-              </div>
-              <div class="tier-row">
-                <span class="tier-range">20+ items</span>
-                <span class="tier-discount">15% discount</span>
-              </div>
-            </div>
-          </section>
-
-          <!-- Action Buttons -->
-          <div class="button-group">
-            <button type="reset" class="btn btn-secondary" id="resetBtn">
-              Reset Calculator
-            </button>
+          <div class="tiers">
+            <h3 class="tiers__heading">Volume discount schedule</h3>
+            <table class="tiers__table">
+              <thead>
+                <tr>
+                  <th scope="col">Quantity</th>
+                  <th scope="col">Discount</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1&ndash;4 items</td>
+                  <td>0%</td>
+                </tr>
+                <tr>
+                  <td>5&ndash;9 items</td>
+                  <td>5%</td>
+                </tr>
+                <tr>
+                  <td>10&ndash;19 items</td>
+                  <td>10%</td>
+                </tr>
+                <tr>
+                  <td>20+ items</td>
+                  <td>15%</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
-        </div>
-      </main>
+        </section>
 
-      <!-- Footer -->
-      <footer class="footer">
-        <p class="footer-text">
-          Professional Pricing Calculator | Frontend Web Development Project
-        </p>
+        <!-- Ledger / breakdown -->
+        <section class="calc__ledger" aria-labelledby="ledger-heading">
+          <h2 id="ledger-heading" class="calc__heading">Breakdown</h2>
+
+          <dl class="ledger" id="ledgerList">
+            <div class="ledger__row">
+              <dt>Subtotal</dt>
+              <dd id="subtotalValue">$500.00</dd>
+            </div>
+
+            <div class="ledger__row ledger__row--positive" id="discountRow">
+              <dt>
+                Volume discount
+                <span class="ledger__tag" id="discountTierValue">5&ndash;9 items · 5%</span>
+              </dt>
+              <dd id="discountValue">&minus;$25.00</dd>
+            </div>
+
+            <div class="ledger__row ledger__row--subtotal">
+              <dt>After discount</dt>
+              <dd id="afterDiscountValue">$475.00</dd>
+            </div>
+
+            <div class="ledger__row">
+              <dt>Tax <span class="ledger__tag" id="taxRateLabel">8%</span></dt>
+              <dd id="taxValue">+$38.00</dd>
+            </div>
+          </dl>
+
+          <div class="ledger__total">
+            <span class="ledger__total-label">Total due</span>
+            <span class="ledger__total-value" id="finalTotalValue">$513.00</span>
+          </div>
+
+          <button type="button" class="btn btn--reset" id="resetBtn">
+            Reset calculator
+          </button>
+        </section>
+      </div>
+
+      <footer class="sheet__footer">
+        <p>Frontend web development project &mdash; figures recalculate as you type.</p>
       </footer>
     </div>
 
-    <!-- JavaScript -->
     <script src="js/script.js"></script>
   </body>
 </html>
