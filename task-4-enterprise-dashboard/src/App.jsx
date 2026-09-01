@@ -2,8 +2,6 @@ import React from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
 import { ProtectedRoute } from "./components/ProtectedRoute";
-
-// Pages
 import { LoginPage } from "./pages/LoginPage";
 import { DashboardPage } from "./pages/DashboardPage";
 import { AnalyticsPage } from "./pages/AnalyticsPage";
@@ -21,10 +19,8 @@ function App() {
     <BrowserRouter>
       <AuthProvider>
         <Routes>
-          {/* Public Route - Login */}
           <Route path="/login" element={<LoginPage />} />
 
-          {/* Protected Routes */}
           <Route
             path="/dashboard"
             element={
@@ -74,7 +70,6 @@ function App() {
             }
           />
 
-          {/* Default Route */}
           <Route path="/" element={<Navigate to="/dashboard" replace />} />
           <Route path="*" element={<Navigate to="/dashboard" replace />} />
         </Routes>
