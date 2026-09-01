@@ -188,7 +188,7 @@ enterprise-dashboard-portal/
   payload: {
     userId: 'user-001',
     role: 'admin',
-    email: 'admin@progree.com',
+    email: 'zainab@admin.com',
     iat: 1234567890,
     exp: 1234567890 + 86400000
   },
@@ -200,8 +200,8 @@ enterprise-dashboard-portal/
 
 ```
 Admin Account:
-  Email: admin@progree.com
-  Password: Admin123!
+  Email: zainab@admin.com
+  Password: zainab1234
   Role: Admin
 
 Demo Account:
@@ -430,8 +430,8 @@ npm run preview
 ```
 1. Navigate to http://localhost:3000
 2. Use credentials:
-   Email: admin@progree.com
-   Password: Admin123!
+   Email: zainab@admin.com
+   Password: zainab1234
 3. Click "Login"
 4. Should redirect to /dashboard
 ```
