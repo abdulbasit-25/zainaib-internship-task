@@ -6,12 +6,13 @@ import {
   CircleDollarSign,
   Minus,
   PackageCheck,
+  ShieldCheck,
   TrendingUp,
+  TriangleAlert,
   UsersRound,
 } from "lucide-react";
 import { AdminLayout } from "../layouts/AdminLayout";
 import { MetricCard } from "../components/MetricCard";
-import { ChartCard } from "../components/ChartCard";
 import { DataTable } from "../components/DataTable";
 import { useTable } from "../hooks";
 import {
@@ -63,6 +64,13 @@ const directionIcon = {
   up: ArrowUpRight,
   down: ArrowDownRight,
   flat: Minus,
+};
+
+const activityIconMap = {
+  sale: CircleDollarSign,
+  user: UsersRound,
+  alert: TriangleAlert,
+  system: ShieldCheck,
 };
 
 /**
@@ -133,7 +141,14 @@ export const DashboardPage = () => {
           <h2 className="section-title">Recent Activity</h2>
           <DataTable
             columns={[
-              { key: "icon", label: "Type", render: (val, item) => item.icon },
+              {
+                key: "icon",
+                label: "Type",
+                render: (_, item) => {
+                  const Icon = activityIconMap[item.type] || Activity;
+                  return <Icon size={14} />;
+                },
+              },
               { key: "message", label: "Event" },
               { key: "timestamp", label: "Time" },
             ]}
