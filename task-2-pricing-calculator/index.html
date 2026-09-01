@@ -19,7 +19,9 @@
         <div class="letterhead__mark" aria-hidden="true">$</div>
         <div class="letterhead__text">
           <h1 class="letterhead__title">Pricing Calculator</h1>
-          <p class="letterhead__subtitle">Quote out a price with volume discounts applied automatically</p>
+          <p class="letterhead__subtitle">
+            Quote out a price with volume discounts applied automatically
+          </p>
         </div>
       </header>
 
@@ -30,7 +32,9 @@
 
           <form id="calculatorForm" class="form" novalidate>
             <div class="field">
-              <label for="productName" class="field__label">Product or service</label>
+              <label for="productName" class="field__label"
+                >Product or service</label
+              >
               <input
                 type="text"
                 id="productName"
@@ -40,7 +44,11 @@
                 value="Web Development Service"
                 required
               />
-              <span class="field__error" id="productNameError" role="alert"></span>
+              <span
+                class="field__error"
+                id="productNameError"
+                role="alert"
+              ></span>
             </div>
 
             <div class="field-row">
@@ -60,7 +68,11 @@
                     required
                   />
                 </div>
-                <span class="field__error" id="unitPriceError" role="alert"></span>
+                <span
+                  class="field__error"
+                  id="unitPriceError"
+                  role="alert"
+                ></span>
               </div>
 
               <div class="field">
@@ -76,7 +88,11 @@
                   step="1"
                   required
                 />
-                <span class="field__error" id="quantityError" role="alert"></span>
+                <span
+                  class="field__error"
+                  id="quantityError"
+                  role="alert"
+                ></span>
               </div>
             </div>
 
@@ -145,7 +161,9 @@
             <div class="ledger__row ledger__row--positive" id="discountRow">
               <dt>
                 Volume discount
-                <span class="ledger__tag" id="discountTierValue">5&ndash;9 items · 5%</span>
+                <span class="ledger__tag" id="discountTierValue"
+                  >5&ndash;9 items · 5%</span
+                >
               </dt>
               <dd id="discountValue">&minus;$25.00</dd>
             </div>
@@ -163,7 +181,9 @@
 
           <div class="ledger__total">
             <span class="ledger__total-label">Total due</span>
-            <span class="ledger__total-value" id="finalTotalValue">$513.00</span>
+            <span class="ledger__total-value" id="finalTotalValue"
+              >$513.00</span
+            >
           </div>
 
           <button type="button" class="btn btn--reset" id="resetBtn">
@@ -173,7 +193,11 @@
       </div>
 
       <footer class="sheet__footer">
-        <p>Frontend web development project &mdash; figures recalculate as you type.</p>
+        <p>
+          Frontend web development project &mdash; figures recalculate as you
+          type.
+        </p>
+        <p>Made By Zainab faraz</p>
       </footer>
     </div>
 
