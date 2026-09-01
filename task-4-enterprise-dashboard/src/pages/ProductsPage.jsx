@@ -54,7 +54,7 @@ export const ProductsPage = () => {
           <div className="stat">
             <span className="stat-label">Total Value</span>
             <span className="stat-value">
-              $
+              PKR
               {(
                 productsTableData.reduce(
                   (acc, p) => acc + p.price * p.stock,
