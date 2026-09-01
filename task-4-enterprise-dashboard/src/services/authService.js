@@ -6,8 +6,8 @@
 
 // Mock credentials for demonstration
 const MOCK_CREDENTIALS = {
-  "zainab@admin.com": "zainab1234",
-  "demo@progree.com": "Demo123!",
+  "zainab@admin.com": "z@inab*#56",
+  "demo@user.com": "Dem@786-12",
 };
 
 // Token expiration time (24 hours)
@@ -81,7 +81,7 @@ export function login(email, password) {
   return {
     success: false,
     message:
-      "Invalid email or password. Try zainab@admin.com / zainab1234 or demo@progree.com / Demo123!",
+      "Invalid email or password. Try zainab@admin.com / z@inab*#56 or demo@user.com / Dem@786-12",
   };
 }
 
