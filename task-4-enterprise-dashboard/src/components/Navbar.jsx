@@ -1,22 +1,64 @@
-import React, { useState } from "react";
-import {
-  Bell,
-  ChevronDown,
-  Menu,
-  MoonStar,
-  Search,
-  Sparkles,
-  SunMedium,
-} from "lucide-react";
+import React, { useEffect, useRef, useState } from "react";
+import { Bell, ChevronDown, Menu, Search, Sparkles } from "lucide-react";
 import { useAuth } from "../context/AuthContext";
 import "./Navbar.css";
+
+const notifications = [
+  {
+    id: 1,
+    type: "transaction",
+    icon: "$",
+    text: "New transaction from John Smith",
+    time: "2 minutes ago",
+  },
+  {
+    id: 2,
+    type: "warning",
+    icon: "!",
+    text: "Low stock alert for Support Package",
+    time: "15 minutes ago",
+  },
+  {
+    id: 3,
+    type: "system",
+    icon: "✓",
+    text: "System backup completed",
+    time: "1 hour ago",
+  },
+];
 
 /**
  * Navbar - Premium enterprise top navigation
  */
-export const Navbar = ({ title, onMenuClick, isLive, isDark, onToggleTheme }) => {
+export const Navbar = ({ title, onMenuClick, isLive }) => {
   const { user } = useAuth();
   const [showNotifications, setShowNotifications] = useState(false);
+  const notificationRef = useRef(null);
+
+  // Close the dropdown on outside click or Escape
+  useEffect(() => {
+    if (!showNotifications) return;
+
+    const handleClickOutside = (e) => {
+      if (
+        notificationRef.current &&
+        !notificationRef.current.contains(e.target)
+      ) {
+        setShowNotifications(false);
+      }
+    };
+
+    const handleEscape = (e) => {
+      if (e.key === "Escape") setShowNotifications(false);
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("keydown", handleEscape);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("keydown", handleEscape);
+    };
+  }, [showNotifications]);
 
   return (
     <nav className="navbar">
@@ -52,7 +94,7 @@ export const Navbar = ({ title, onMenuClick, isLive, isDark, onToggleTheme }) =>
         </div>
       </div>
 
-      {/* Right — Status, Theme, Notifications, Profile */}
+      {/* Right — Status, Notifications, Profile */}
       <div className="navbar-right">
         {isLive && (
           <div className="live-indicator">
@@ -61,25 +103,18 @@ export const Navbar = ({ title, onMenuClick, isLive, isDark, onToggleTheme }) =>
           </div>
         )}
 
-        <button
-          type="button"
-          className="theme-toggle"
-          onClick={onToggleTheme}
-          aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
-        >
-          {isDark ? <SunMedium size={18} /> : <MoonStar size={18} />}
-        </button>
-
         {/* Notifications */}
-        <div className="notification-container">
+        <div className="notification-container" ref={notificationRef}>
           <button
             className={`notification-btn ${showNotifications ? "active" : ""}`}
-            onClick={() => setShowNotifications(!showNotifications)}
+            onClick={() => setShowNotifications((prev) => !prev)}
             aria-label="Notifications"
             aria-expanded={showNotifications}
           >
             <Bell size={18} strokeWidth={2} />
-            <span className="notification-badge">3</span>
+            {notifications.length > 0 && (
+              <span className="notification-badge">{notifications.length}</span>
+            )}
           </button>
 
           {showNotifications && (
@@ -90,41 +125,28 @@ export const Navbar = ({ title, onMenuClick, isLive, isDark, onToggleTheme }) =>
                   <h3>Notifications</h3>
                 </div>
 
-                <span className="notification-count">3 new</span>
+                <span className="notification-count">
+                  {notifications.length} new
+                </span>
               </div>
 
               <div className="notification-list">
-                <div className="notification-item">
-                  <div className="notification-icon transaction">$</div>
+                {notifications.map((n) => (
+                  <div className="notification-item" key={n.id}>
+                    <div className={`notification-icon ${n.type}`}>
+                      {n.icon}
+                    </div>
 
-                  <div>
-                    <p>New transaction from John Smith</p>
-                    <span className="notification-time">2 minutes ago</span>
+                    <div>
+                      <p>{n.text}</p>
+                      <span className="notification-time">{n.time}</span>
+                    </div>
                   </div>
-                </div>
-
-                <div className="notification-item">
-                  <div className="notification-icon warning">!</div>
-
-                  <div>
-                    <p>Low stock alert for Support Package</p>
-                    <span className="notification-time">15 minutes ago</span>
-                  </div>
-                </div>
-
-                <div className="notification-item">
-                  <div className="notification-icon system">✓</div>
-
-                  <div>
-                    <p>System backup completed</p>
-                    <span className="notification-time">1 hour ago</span>
-                  </div>
-                </div>
+                ))}
               </div>
 
               <button className="view-notifications">
                 View all notifications
-                <span>→</span>
               </button>
             </div>
           )}
