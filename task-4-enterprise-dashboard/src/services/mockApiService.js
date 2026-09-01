@@ -1,9 +1,3 @@
-/**
- * Mock API Service - Simulates real-time data streaming
- * DISCLAIMER: This is a frontend simulation for demonstration purposes
- * In production, use a real backend API
- */
-
 import {
   BarChart3,
   CircleDollarSign,
@@ -20,10 +14,6 @@ import {
   conversionData,
 } from "../data/mockData";
 
-/**
- * Simulate incoming JSON metrics
- * Returns updated metrics with slight variations
- */
 export function simulateMetricsUpdate(currentMetrics) {
   const variance = (value, percent = 0.05) => {
     const change = value * percent * (Math.random() - 0.5) * 2;
@@ -39,29 +29,18 @@ export function simulateMetricsUpdate(currentMetrics) {
   };
 }
 
-/**
- * Stream metrics updates at specified interval
- * Returns a callback function to set metrics
- */
 export function startMetricsStream(setMetrics, interval = 5000) {
-  // Initial metrics
   let currentMetrics = { ...initialMetrics };
   setMetrics(currentMetrics);
 
-  // Stream updates every interval (5 seconds)
   const intervalId = setInterval(() => {
     currentMetrics = simulateMetricsUpdate(currentMetrics);
     setMetrics(currentMetrics);
   }, interval);
 
-  // Return cleanup function
   return () => clearInterval(intervalId);
 }
 
-/**
- * Start chart data stream
- * Simulates incoming chart data
- */
 export function startChartDataStream(setChartData, dataType, interval = 5000) {
   let dataMap = {
     revenue: [...revenueData],
@@ -74,7 +53,6 @@ export function startChartDataStream(setChartData, dataType, interval = 5000) {
   setChartData(currentData);
 
   const intervalId = setInterval(() => {
-    // Simulate new data point
     const lastItem = currentData[currentData.length - 1];
     const dayNum = currentData.length + 1;
 
@@ -111,7 +89,6 @@ export function startChartDataStream(setChartData, dataType, interval = 5000) {
         return;
     }
 
-    // Keep last 7 days
     if (currentData.length > 7) {
       currentData.shift();
     }
