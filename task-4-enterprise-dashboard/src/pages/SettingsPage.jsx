@@ -8,7 +8,7 @@ import "./SettingsPage.css";
 export const SettingsPage = () => {
   const [settings, setSettings] = useState({
     profileName: "Admin User",
-    email: "admin@progree.com",
+    email: "zainab@admin.com",
     notifications: true,
     emailAlerts: true,
     darkMode: false,
