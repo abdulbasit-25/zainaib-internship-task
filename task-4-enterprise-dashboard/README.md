@@ -201,12 +201,12 @@ enterprise-dashboard-portal/
 ```
 Admin Account:
   Email: zainab@admin.com
-  Password: zainab1234
+  Password: z@inab*#56
   Role: Admin
 
 Demo Account:
-  Email: demo@progree.com
-  Password: Demo123!
+  Email: demo@user.com
+  Password: Dem@786-12
   Role: User
 ```
 
@@ -431,7 +431,7 @@ npm run preview
 1. Navigate to http://localhost:3000
 2. Use credentials:
    Email: zainab@admin.com
-   Password: zainab1234
+   Password: z@inab*#56
 3. Click "Login"
 4. Should redirect to /dashboard
 ```
