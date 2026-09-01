@@ -18,12 +18,12 @@ npm run build
 **Admin Account:**
 
 - Email: `zainab@admin.com`
-- Password: `zainab1234`
+- Password: `z@inab*#56`
 
 **Demo Account:**
 
-- Email: `demo@progree.com`
-- Password: `Demo123!`
+- Email: `demo@user.com`
+- Password: `Dem@786-12`
 
 ## Features to Try
 
