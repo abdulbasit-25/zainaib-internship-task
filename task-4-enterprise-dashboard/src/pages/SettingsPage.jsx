@@ -25,7 +25,7 @@ const initialSettings = {
 export const SettingsPage = () => {
   const [saved, setSaved] = useState(initialSettings);
   const [settings, setSettings] = useState(initialSettings);
-  const [saveState, setSaveState] = useState("idle"); // idle | saved
+  const [saveState, setSaveState] = useState("idle");
   const [confirmingDelete, setConfirmingDelete] = useState(false);
 
   const isDirty = JSON.stringify(saved) !== JSON.stringify(settings);
@@ -50,7 +50,6 @@ export const SettingsPage = () => {
       setConfirmingDelete(true);
       return;
     }
-    // Actual delete logic would go here.
     setConfirmingDelete(false);
   };
 
@@ -90,7 +89,6 @@ export const SettingsPage = () => {
             </div>
           </section>
 
-          {/* Notification Section */}
           <section className="settings-section">
             <h2 className="section-title">
               <span className="section-icon">
@@ -126,7 +124,6 @@ export const SettingsPage = () => {
             </div>
           </section>
 
-          {/* Preferences Section */}
           <section className="settings-section">
             <h2 className="section-title">
               <span className="section-icon">
@@ -161,7 +158,6 @@ export const SettingsPage = () => {
             </div>
           </section>
 
-          {/* Security Section */}
           <section className="settings-section">
             <h2 className="section-title">
               <span className="section-icon">
@@ -189,7 +185,6 @@ export const SettingsPage = () => {
             </div>
           </section>
 
-          {/* Danger Zone */}
           <section className="settings-section danger-zone">
             <h2 className="section-title">
               <span className="section-icon section-icon--danger">
@@ -210,7 +205,6 @@ export const SettingsPage = () => {
             </div>
           </section>
 
-          {/* Action Buttons */}
           <div className="settings-actions">
             {saveState === "saved" && (
               <span className="save-confirmation">
