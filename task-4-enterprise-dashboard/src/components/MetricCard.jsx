@@ -1,4 +1,5 @@
 import React from "react";
+import { ArrowDownRight, ArrowUpRight } from "lucide-react";
 import "./MetricCard.css";
 
 /**
@@ -6,7 +7,7 @@ import "./MetricCard.css";
  */
 export const MetricCard = ({ title, value, change, icon, isPositive }) => {
   const changeClass = isPositive ? "positive" : "negative";
-  const changeSymbol = isPositive ? "↑" : "↓";
+  const TrendIcon = isPositive ? ArrowUpRight : ArrowDownRight;
 
   return (
     <div className="metric-card fade-in">
@@ -18,7 +19,9 @@ export const MetricCard = ({ title, value, change, icon, isPositive }) => {
       <div className="metric-value">{value}</div>
 
       <div className={`metric-change ${changeClass}`}>
-        <span className="change-symbol">{changeSymbol}</span>
+        <span className="change-symbol">
+          <TrendIcon size={14} />
+        </span>
         <span className="change-value">{Math.abs(change)}%</span>
         <span className="change-text">from last week</span>
       </div>
