@@ -6,7 +6,7 @@
 
 // Mock credentials for demonstration
 const MOCK_CREDENTIALS = {
-  "admin@progree.com": "Admin123!",
+  "zainab@admin.com": "zainab1234",
   "demo@progree.com": "Demo123!",
 };
 
@@ -61,8 +61,8 @@ export function login(email, password) {
 
   // Check credentials
   if (MOCK_CREDENTIALS[email] && MOCK_CREDENTIALS[email] === password) {
-    const userId = email === "admin@progree.com" ? "user-001" : "user-002";
-    const role = email === "admin@progree.com" ? "admin" : "user";
+    const userId = email === "zainab@admin.com" ? "user-001" : "user-002";
+    const role = email === "zainab@admin.com" ? "admin" : "user";
     const token = generateToken(userId, role, email);
 
     return {
@@ -71,7 +71,7 @@ export function login(email, password) {
       user: {
         id: userId,
         email,
-        name: email === "admin@progree.com" ? "Admin User" : "Demo User",
+        name: email === "zainab@admin.com" ? "Admin User" : "Demo User",
         role,
         avatar: `https://ui-avatars.com/api/?name=${encodeURIComponent(email)}&background=0D8ABC&color=fff`,
       },
@@ -81,7 +81,7 @@ export function login(email, password) {
   return {
     success: false,
     message:
-      "Invalid email or password. Try admin@progree.com / Admin123! or demo@progree.com / Demo123!",
+      "Invalid email or password. Try zainab@admin.com / zainab1234 or demo@progree.com / Demo123!",
   };
 }
 
@@ -123,7 +123,7 @@ export function getCurrentUser(token) {
     id: payload.userId,
     email: payload.email,
     role: payload.role,
-    name: payload.email === "admin@progree.com" ? "Admin User" : "Demo User",
+    name: payload.email === "zainab@admin.com" ? "Admin User" : "Demo User",
     avatar: `https://ui-avatars.com/api/?name=${encodeURIComponent(payload.email)}&background=0D8ABC&color=fff`,
   };
 }
