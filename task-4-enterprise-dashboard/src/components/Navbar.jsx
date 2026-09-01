@@ -1,12 +1,20 @@
 import React, { useState } from "react";
-import { Bell, ChevronDown, Menu, Search, Sparkles } from "lucide-react";
+import {
+  Bell,
+  ChevronDown,
+  Menu,
+  MoonStar,
+  Search,
+  Sparkles,
+  SunMedium,
+} from "lucide-react";
 import { useAuth } from "../context/AuthContext";
 import "./Navbar.css";
 
 /**
  * Navbar - Premium enterprise top navigation
  */
-export const Navbar = ({ title, onMenuClick, isLive }) => {
+export const Navbar = ({ title, onMenuClick, isLive, isDark, onToggleTheme }) => {
   const { user } = useAuth();
   const [showNotifications, setShowNotifications] = useState(false);
 
@@ -44,7 +52,7 @@ export const Navbar = ({ title, onMenuClick, isLive }) => {
         </div>
       </div>
 
-      {/* Right — Status, Notifications, Profile */}
+      {/* Right — Status, Theme, Notifications, Profile */}
       <div className="navbar-right">
         {isLive && (
           <div className="live-indicator">
@@ -52,6 +60,15 @@ export const Navbar = ({ title, onMenuClick, isLive }) => {
             <span className="live-text">Live</span>
           </div>
         )}
+
+        <button
+          type="button"
+          className="theme-toggle"
+          onClick={onToggleTheme}
+          aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
+        >
+          {isDark ? <SunMedium size={18} /> : <MoonStar size={18} />}
+        </button>
 
         {/* Notifications */}
         <div className="notification-container">
