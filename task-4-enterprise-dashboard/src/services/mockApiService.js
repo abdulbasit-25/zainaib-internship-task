@@ -5,6 +5,14 @@
  */
 
 import {
+  BarChart3,
+  CircleDollarSign,
+  Package,
+  TrendingUp,
+  Users,
+  Zap,
+} from "lucide-react";
+import {
   initialMetrics,
   revenueData,
   usersData,
@@ -131,7 +139,7 @@ export function getMetricsWithChange(currentMetrics, previousMetrics) {
         currentMetrics.totalRevenue,
         initialMetrics.totalRevenue,
       ),
-      icon: "💰",
+      icon: <CircleDollarSign size={17} />,
     },
     activeUsers: {
       value: currentMetrics.activeUsers.toLocaleString(),
@@ -139,7 +147,7 @@ export function getMetricsWithChange(currentMetrics, previousMetrics) {
         currentMetrics.activeUsers,
         initialMetrics.activeUsers,
       ),
-      icon: "👥",
+      icon: <Users size={17} />,
     },
     totalOrders: {
       value: currentMetrics.totalOrders.toLocaleString(),
@@ -147,7 +155,7 @@ export function getMetricsWithChange(currentMetrics, previousMetrics) {
         currentMetrics.totalOrders,
         initialMetrics.totalOrders,
       ),
-      icon: "📦",
+      icon: <Package size={17} />,
     },
     conversionRate: {
       value: `${currentMetrics.conversionRate.toFixed(2)}%`,
@@ -155,7 +163,7 @@ export function getMetricsWithChange(currentMetrics, previousMetrics) {
         currentMetrics.conversionRate,
         initialMetrics.conversionRate,
       ),
-      icon: "📈",
+      icon: <TrendingUp size={17} />,
     },
     systemPerformance: {
       value: `${currentMetrics.systemPerformance.toFixed(1)}%`,
@@ -163,7 +171,7 @@ export function getMetricsWithChange(currentMetrics, previousMetrics) {
         currentMetrics.systemPerformance,
         initialMetrics.systemPerformance,
       ),
-      icon: "⚡",
+      icon: <Zap size={17} />,
     },
   };
 }
