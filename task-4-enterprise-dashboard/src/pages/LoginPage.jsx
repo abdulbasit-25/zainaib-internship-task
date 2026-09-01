@@ -105,6 +105,7 @@ export const LoginPage = () => {
             ⚠️ This is a frontend simulation for demonstration purposes only.
             Authentication is simulated in the browser using local storage.
           </p>
+          <p className="made-by">Made By Zainab faraz</p>
         </div>
       </div>
     </div>
