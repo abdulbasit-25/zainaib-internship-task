@@ -1,5 +1,12 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import {
+  BarChart3,
+  LockKeyhole,
+  Mail,
+  ShieldCheck,
+  Sparkles,
+} from "lucide-react";
 import { useAuth } from "../context/AuthContext";
 import "./LoginPage.css";
 
@@ -42,15 +49,25 @@ export const LoginPage = () => {
       <div className="login-container">
         <div className="login-header">
           <div className="login-logo">
-            <span className="logo-icon">📊</span>
-            <span className="logo-text">Enterprise Dashboard</span>
+            <span className="logo-icon">
+              <BarChart3 size={24} />
+            </span>
+            <span className="logo-text">NovaOps</span>
           </div>
-          <p className="login-subtitle">Management Portal</p>
+          <p className="login-subtitle">Enterprise Dashboard Portal</p>
+        </div>
+
+        <div className="login-trust">
+          <ShieldCheck size={16} />
+          Secure operational access
         </div>
 
         <form className="login-form" onSubmit={handleSubmit}>
           <div className="form-group">
-            <label htmlFor="email">Email Address</label>
+            <label htmlFor="email">
+              <Mail size={14} />
+              Email Address
+            </label>
             <input
               id="email"
               type="email"
@@ -63,7 +80,10 @@ export const LoginPage = () => {
           </div>
 
           <div className="form-group">
-            <label htmlFor="password">Password</label>
+            <label htmlFor="password">
+              <LockKeyhole size={14} />
+              Password
+            </label>
             <input
               id="password"
               type="password"
@@ -83,7 +103,10 @@ export const LoginPage = () => {
         </form>
 
         <div className="demo-credentials">
-          <h4>Demo Credentials</h4>
+          <h4>
+            <Sparkles size={14} />
+            Demo Credentials
+          </h4>
           <div className="credential-item">
             <p>
               <strong>Admin Account:</strong>
@@ -102,7 +125,7 @@ export const LoginPage = () => {
 
         <div className="login-footer">
           <p className="disclaimer">
-            ⚠️ This is a frontend simulation for demonstration purposes only.
+            This is a frontend simulation for demonstration purposes only.
             Authentication is simulated in the browser using local storage.
           </p>
         </div>
