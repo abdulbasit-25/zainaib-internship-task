@@ -75,7 +75,7 @@ export const AnalyticsPage = () => {
                     border: "1px solid #e5e7eb",
                     borderRadius: "6px",
                   }}
-                  formatter={(value) => `$${value}`}
+                  formatter={(value) => `PKR ${value}`}
                 />
                 <Area
                   type="monotone"
@@ -214,7 +214,7 @@ export const AnalyticsPage = () => {
                 />
                 Revenue Per User
               </h4>
-              <p className="summary-value">$197</p>
+              <p className="summary-value">PKR 197</p>
               <p className="summary-detail">Average this period</p>
             </div>
           </div>
