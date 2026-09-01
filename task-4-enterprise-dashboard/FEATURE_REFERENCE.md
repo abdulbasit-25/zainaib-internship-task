@@ -50,7 +50,7 @@
 
 ### Real-Time Metrics
 
-- 💰 **Total Revenue**: $245K (updates every 3s)
+- 💰 **Total Revenue**: PKR 245K (updates every 3s)
 - 👥 **Active Users**: 1,245 (live updates)
 - 📦 **Total Orders**: 8,245 (streaming data)
 - 📈 **Conversion Rate**: 4.8% (real-time)
@@ -94,7 +94,7 @@
 - Revenue growth: +23.5%
 - User acquisition: +445
 - Order fulfillment: 98.5%
-- Revenue per user: $197
+- Revenue per user: PKR 197
 
 ---
 
@@ -125,7 +125,7 @@
 
 - Product Name
 - Category (Software, Service, Bundle)
-- Price ($)
+- Price (PKR)
 - Stock (units)
 - Sales (count)
 - Status
@@ -153,7 +153,7 @@
 - Transaction ID
 - Customer Name
 - Date
-- Amount ($)
+- Amount (PKR)
 - Status
 - Payment Method
 
