@@ -185,6 +185,14 @@
   line-height: 1.5;
 }
 
+.made-by {
+  margin-top: 12px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #4f46e5;
+  letter-spacing: 0.04em;
+}
+
 /* Responsive */
 @media (max-width: 480px) {
   .login-container {
